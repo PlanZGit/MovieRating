@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 function Products() {
   return (
     <div>
@@ -7,6 +7,7 @@ function Products() {
         <Link to="feature">Featured</Link>
         <Link to="new">New</Link>
       </nav>
+      <Outlet />
     </div>
   );
 }
