@@ -8,6 +8,9 @@ function Navbar() {
 
       <Link to="/products">Products</Link>
 
+      <Link to="/profile">Profile</Link>
+
+      {/* protect login link with auth*/}
       <Link to="/login">Login</Link>
     </nav>
   );

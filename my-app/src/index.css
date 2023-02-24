@@ -14,10 +14,10 @@ code {
 
 .primary-nav {
   padding: 16px 32px;
+  font-weight: bold;
 }
 
 nav a {
   text-decoration: none;
-  font-weight: bold;
   margin-right: 16px;
 }

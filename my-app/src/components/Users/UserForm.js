@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { userSchema } from "../vaildation/YupUserFormValidation";
+import { userSchema } from "./vaildation/YupUserFormValidation";
 import "../styles/YupUserForm.css";
 
 function YupUserForm() {
