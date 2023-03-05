@@ -8,4 +8,5 @@ This website was made using React, React Router, icon library.
 
 working on the
 
-//Create timer for animation then display to none
+- Finished Header Design
+- Black and Whate Theme

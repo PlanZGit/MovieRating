@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineMenu, AiFillSetting } from "react-icons/ai";
+import { MdLocalMovies } from "react-icons/md";
 import "./Navbar.css";
 
 function Navbar() {
@@ -12,21 +13,11 @@ function Navbar() {
   };
 
   const showStyle = {
-    animation: "growDown 400ms ease-out 0s 1 normal forwards",
-    display: "flex",
+    animation: "growDown .15s ease-out 0s 1 normal forwards",
   };
   const hideStyle = {
-    // animation: "shrinkDown 400ms ease-out 0s 1 normal forwards",
+    animation: "shrinkDown .4s ease-out 0s 1 normal forwards",
   };
-  console.log(displayMenu);
-
-  //Create timer for animation then display to none
-  useEffect(() => {
-    if (!displayMenu) {
-      // menuRef.current.style = { display: "none" };
-      // console.log((menuRef.current.style = { display: "none" }));
-    }
-  }, [displayMenu]);
 
   return (
     <nav className="primary-nav">
@@ -42,6 +33,11 @@ function Navbar() {
 
           <div id="logo">
             <p>LOGO</p>
+            <MdLocalMovies />
+          </div>
+
+          <div id="menu-icon" style={{ right: "32px" }}>
+            <AiFillSetting />
           </div>
         </div>
 
