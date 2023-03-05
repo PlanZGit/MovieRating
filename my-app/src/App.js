@@ -7,9 +7,6 @@ import Products from "./components/Products";
 import FeaturedProducts from "./components/FeaturedProducts";
 import NewProducts from "./components/NewProducts";
 
-import Profile from "./components/Profile";
-import Login from "./components/Users/UserForm";
-
 function App() {
   return (
     <div className="App">
@@ -17,8 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="*" element={<NoMatch />}></Route>
-        <Route path="profile" element={<Profile />}></Route>
-        <Route path="login" element={<Login />} />
+
         <Route path="/products" element={<Products />}>
           <Route index element={<FeaturedProducts />} />
           <Route path="feature" element={<FeaturedProducts />}></Route>

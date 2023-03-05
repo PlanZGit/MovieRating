@@ -4,20 +4,24 @@ body {
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* -moz-osx-font-smoothing: grayscale; */
+  background-color: rgb(37, 37, 37);
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+} */
+
+a,
+p,
+h1,
+h2,
+h3,
+svg {
+  color: white;
 }
 
-.primary-nav {
-  padding: 16px 32px;
-  font-weight: bold;
-}
-
-nav a {
-  text-decoration: none;
-  margin-right: 16px;
+p {
+  margin: 0px;
 }
