@@ -4,6 +4,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { MdLocalMovies } from "react-icons/md";
 import "./Navbar.css";
 import Slider from "./slider/Slider.js";
+import Search from "./search/Search";
 
 let renderMENU = false;
 
@@ -11,7 +12,6 @@ function Navbar() {
   const [displayMenu, setDisplayMenu] = useState(false);
 
   useEffect(() => {
-    console.log("running");
     renderMENU = true;
   }, []);
 
@@ -40,7 +40,7 @@ function Navbar() {
           </div>
 
           <div id="logo">
-            <strong>LOGO</strong>
+            <h1>LOGO</h1>
             <MdLocalMovies />
           </div>
 
@@ -58,7 +58,7 @@ function Navbar() {
           </div>
         ) : null}
 
-        <input></input>
+        <Search />
       </div>
     </nav>
   );

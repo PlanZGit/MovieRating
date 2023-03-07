@@ -12,6 +12,17 @@ body {
   transition: 0.4s;
 }
 
+.dark-mode {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  transition: 1s;
+}
+
+h1,
+h3 {
+  margin: 0;
+}
+
 a {
   color: white;
 }
@@ -20,13 +31,34 @@ p {
   margin: 0px;
 }
 
-.dark-mode {
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
-  transition: 1s;
-}
-
 svg {
   width: 30px;
   height: 30px;
+}
+
+.innerCircle {
+  background-color: rgba(255, 255, 255, 0);
+  border: 10px solid rgba(189, 215, 60, 1);
+  /* opacity: 0.9; */
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-radius: 50%;
+  /* top: -110px; */
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  position: relative;
+  animation: spinoffPulse 20s infinite linear;
+  /* -webkit-animation: spinoffPulse 1s infinite linear; */
+  animation-fill-mode: both;
+  user-select: none;
+}
+
+@keyframes spinoffPulse {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+  }
 }

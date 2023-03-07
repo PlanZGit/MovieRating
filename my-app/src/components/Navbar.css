@@ -31,8 +31,12 @@
   justify-content: center;
   align-items: center;
 }
-.primary-nav #header #logo strong {
-  font-size: 34px;
+.primary-nav #header #logo {
+  font-size: 24px;
+}
+.primary-nav #header #logo svg {
+  width: 48px;
+  height: 48px;
 }
 
 .primary-nav input {
@@ -42,7 +46,7 @@
 
 .menu-list {
   position: absolute;
-  top: 80px;
+  top: 70px;
   display: flex;
   flex-direction: column;
   text-align: start;

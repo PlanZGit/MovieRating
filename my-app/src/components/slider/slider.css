@@ -35,7 +35,7 @@
 }
 
 input:checked + .inside + .slider {
-  background-color: rgb(97, 205, 255);
+  background-color: rgba(189, 215, 60, 1);
 }
 
 input:checked + .inside {
