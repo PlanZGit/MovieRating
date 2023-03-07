@@ -1,5 +1,4 @@
-import "./App.css";
-import React from "react";
+import React, { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
@@ -7,12 +6,17 @@ import NoMatch from "./components/NoMatch";
 import Products from "./components/Products";
 import FeaturedProducts from "./components/FeaturedProducts";
 import NewProducts from "./components/NewProducts";
+
 export const SettingContext = React.createContext();
+
+const setting = {
+  color: false,
+};
 
 function App() {
   return (
-    <div className="App">
-      <SettingContext.Provider value={"black"}>
+    <div>
+      <SettingContext.Provider value={setting}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />}></Route>

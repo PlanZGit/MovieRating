@@ -5,23 +5,28 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   /* -moz-osx-font-smoothing: grayscale; */
+
   background-color: rgb(37, 37, 37);
+  color: white;
+  text-align: center;
+  transition: 0.4s;
 }
 
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-} */
-
-a,
-p,
-h1,
-h2,
-h3,
-svg {
+a {
   color: white;
 }
 
 p {
   margin: 0px;
+}
+
+.dark-mode {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  transition: 1s;
+}
+
+svg {
+  width: 30px;
+  height: 30px;
 }

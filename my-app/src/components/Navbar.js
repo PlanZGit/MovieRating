@@ -1,12 +1,19 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { AiOutlineMenu, AiFillSetting } from "react-icons/ai";
+import { AiOutlineMenu } from "react-icons/ai";
 import { MdLocalMovies } from "react-icons/md";
 import "./Navbar.css";
+import Slider from "./slider/Slider.js";
+
+let renderMENU = false;
 
 function Navbar() {
-  const menuRef = useRef(null);
   const [displayMenu, setDisplayMenu] = useState(false);
+
+  useEffect(() => {
+    console.log("running");
+    renderMENU = true;
+  }, []);
 
   const handleDisplayToggle = () => {
     setDisplayMenu(!displayMenu);
@@ -15,6 +22,7 @@ function Navbar() {
   const showStyle = {
     animation: "growDown .15s ease-out 0s 1 normal forwards",
   };
+
   const hideStyle = {
     animation: "shrinkDown .4s ease-out 0s 1 normal forwards",
   };
@@ -32,25 +40,23 @@ function Navbar() {
           </div>
 
           <div id="logo">
-            <p>LOGO</p>
+            <strong>LOGO</strong>
             <MdLocalMovies />
           </div>
 
-          <div id="menu-icon" style={{ right: "32px" }}>
-            <AiFillSetting />
+          <Slider />
+        </div>
+        {renderMENU ? (
+          <div
+            className="menu-list"
+            style={displayMenu ? showStyle : hideStyle}
+          >
+            <Link to="/">
+              <p>Home</p>
+            </Link>
+            <Link to="/products">Products</Link>
           </div>
-        </div>
-
-        <div
-          id="menu-list"
-          ref={menuRef}
-          style={displayMenu ? showStyle : hideStyle}
-        >
-          <Link to="/">
-            <p>Home</p>
-          </Link>
-          <Link to="/products">Products</Link>
-        </div>
+        ) : null}
 
         <input></input>
       </div>

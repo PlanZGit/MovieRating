@@ -9,4 +9,4 @@ This website was made using React, React Router, icon library.
 working on the
 
 - Finished Header Design
-- Black and Whate Theme
+- Working Black and Whate Theme
