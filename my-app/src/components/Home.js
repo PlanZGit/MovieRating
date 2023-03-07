@@ -19,7 +19,7 @@ function Home() {
           }}
         >
           <div>
-            <h3>HomePage</h3>
+            <h2>HomePage</h2>
             <div className="innerCircle">
               <h3>Movie</h3>
               <div
