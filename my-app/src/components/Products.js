@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 function Products() {
   return (
     <div>
-      <nav>
+      <nav style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
         <Link to="feature">Featured</Link>
         <Link to="new">New</Link>
       </nav>

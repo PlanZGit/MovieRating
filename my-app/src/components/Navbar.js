@@ -40,7 +40,7 @@ function Navbar() {
           </div>
 
           <div id="logo">
-            <h1>LOGO</h1>
+            <h1>Movie Reviews</h1>
             <MdLocalMovies />
           </div>
 
