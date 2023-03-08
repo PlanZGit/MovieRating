@@ -1,11 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import "./DataAxiosGet.css";
 export const MovieContext = React.createContext();
+
 let movieData = [];
 
 function DataAxiosGet(props) {
   const { children } = props;
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     //HTTP GET
@@ -14,17 +17,29 @@ function DataAxiosGet(props) {
       .then((response) => {
         // console.log(response.data);
         movieData = response.data;
-
         setLoading(false);
       })
       .catch((error) => {
         setLoading(false);
+        setError(true);
       });
   }, []);
 
   return (
+    //Pass movieData as useContext, if fetch data fail, return error, else load page
     <MovieContext.Provider value={movieData}>
-      {loading ? "Loading..." : children}
+      {loading ? (
+        <div className="flex-center">
+          <h1>Loading...</h1>
+          <div className="circle-animation22">
+            <div className="circle-animation22"></div>
+          </div>
+        </div>
+      ) : error ? (
+        <h1>ERROR</h1>
+      ) : (
+        children
+      )}
     </MovieContext.Provider>
   );
 }

@@ -8,7 +8,6 @@ function Home() {
       <div className="parent-container">
         <div className="child-container1">
           <div>
-            <h2>HomePage</h2>
             <div className="circle-animation">
               <h3>Movie</h3>
               <div className="circle-animation">

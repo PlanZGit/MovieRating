@@ -8,7 +8,7 @@ react, react-router-dom, react-icons library, axios
 
 CRUD API - Get data and fill the website with generated data with mockend
 
-    https://mockend.com/PlanZGit/TodoList
+    https://mockend.com/PlanZGit/mockend
 
 working on the
 
