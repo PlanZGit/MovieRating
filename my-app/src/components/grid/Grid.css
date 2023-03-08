@@ -1,4 +1,4 @@
-.grid {
+.flex {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,7 +7,7 @@
   /* margin: 32px; */
 }
 
-.grid-container {
+.flex-container {
   /* background-color: rgb(0, 255, 255); */
   height: 290px;
   width: 200px;
@@ -19,19 +19,19 @@
   cursor: pointer;
 }
 
-.grid-container .image {
+.flex-container .image {
   background-color: rgb(124, 124, 124);
   flex: 10;
   width: 100%;
 }
 
-.grid-container .title {
+.flex-container .title {
   flex: 1;
   /* background-color: aquamarine; */
   text-align: center;
 }
 
-.grid-container .rate {
+.flex-container .rate {
   position: absolute;
   right: 5px;
   top: 0px;

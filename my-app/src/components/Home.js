@@ -1,43 +1,22 @@
 import React from "react";
 import Grid from "./grid/Grid";
+import "./Home.css";
 
 function Home() {
   return (
     <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-          margin: "32px",
-        }}
-      >
-        <div
-          style={{
-            flex: "1",
-          }}
-        >
+      <div className="parent-container">
+        <div className="child-container1">
           <div>
-            <h2>HomePage</h2>
-            <div className="innerCircle">
+            <div className="circle-animation">
               <h3>Movie</h3>
-              <div
-                className="innerCircle"
-                style={{
-                  position: "absolute",
-                  bottom: "3px",
-                  left: "25px",
-                  width: "30px",
-                  height: " 30px",
-                }}
-              >
+              <div className="circle-animation">
                 <h3>Reviews</h3>
               </div>
             </div>
           </div>
         </div>
-        <div style={{ flex: "2" }}>
+        <div className="child-container2">
           Duis adipisicing elit minim et quis adipisicing cupidatat mollit in
           nostrud laborum. Esse eu sit pariatur exercitation laborum nulla
           eiusmod anim sunt. Cillum velit anim nostrud excepteur ea. Qui do

@@ -6,6 +6,7 @@ import NoMatch from "./components/NoMatch";
 import Products from "./components/Products";
 import FeaturedProducts from "./components/FeaturedProducts";
 import NewProducts from "./components/NewProducts";
+import DataAxiosGet from "./components/API/DataAxiosGet";
 
 export const SettingContext = React.createContext();
 
@@ -16,19 +17,21 @@ const setting = {
 function App() {
   return (
     <div>
-      <SettingContext.Provider value={setting}>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="*" element={<NoMatch />}></Route>
+      <DataAxiosGet>
+        <SettingContext.Provider value={setting}>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="*" element={<NoMatch />}></Route>
 
-          <Route path="/products" element={<Products />}>
-            <Route index element={<FeaturedProducts />} />
-            <Route path="feature" element={<FeaturedProducts />}></Route>
-            <Route path="new" element={<NewProducts />}></Route>
-          </Route>
-        </Routes>
-      </SettingContext.Provider>
+            <Route path="/products" element={<Products />}>
+              <Route index element={<FeaturedProducts />} />
+              <Route path="feature" element={<FeaturedProducts />}></Route>
+              <Route path="new" element={<NewProducts />}></Route>
+            </Route>
+          </Routes>
+        </SettingContext.Provider>
+      </DataAxiosGet>
     </div>
   );
 }
