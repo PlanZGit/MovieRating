@@ -5,6 +5,7 @@
   text-align: center;
   margin: 32px;
   margin-bottom: 28px;
+  flex-wrap: wrap;
 }
 
 .child-container1 {

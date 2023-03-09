@@ -1,0 +1,36 @@
+.about {
+  margin: 32px;
+}
+
+.about h1,
+.about h2,
+.about h3 {
+  user-select: none;
+  margin: 32px;
+}
+
+.about h3:hover {
+  background-color: rgb(117, 117, 117);
+  cursor: pointer;
+}
+
+.about-webpage {
+  margin: 64px;
+}
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+.tool {
+  flex: 1;
+  border: 1px solid;
+}
+
+.tool p {
+  margin: 16px;
+  margin-bottom: 32px;
+}

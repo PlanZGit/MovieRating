@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
@@ -7,6 +7,8 @@ import Products from "./components/Products";
 import FeaturedProducts from "./components/FeaturedProducts";
 import NewProducts from "./components/NewProducts";
 import DataAxiosGet from "./components/API/DataAxiosGet";
+import About from "./about/About";
+import BackToTop from "./components/BackToTop/BackToTop";
 
 export const SettingContext = React.createContext();
 
@@ -20,9 +22,11 @@ function App() {
       <DataAxiosGet>
         <SettingContext.Provider value={setting}>
           <Navbar />
+          <BackToTop />
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="*" element={<NoMatch />}></Route>
+            <Route path="/about" element={<About />}></Route>
 
             <Route path="/products" element={<Products />}>
               <Route index element={<FeaturedProducts />} />
