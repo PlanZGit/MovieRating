@@ -26,6 +26,10 @@ React, React Icons library, Axios, Rapid API, MoviesDatabase API
 <img src="https://rapidapi.com/cdn/images?url=https://rapidapi-prod-apis.s3.amazonaws.com/1ff7bd50-3297-4296-be2c-8c9623985696.png" alt="MovieData" width="90px" height="90px">
 </a>
 
+<a href="https://rapidapi.com/user/SAdrian" >
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="MovieData" width="90px" height="90px">
+</a>
+
 </div>
 
 # Progress
