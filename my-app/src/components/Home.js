@@ -17,13 +17,12 @@ function Home() {
           </div>
         </div>
         <div className="child-container2">
-          Duis adipisicing elit minim et quis adipisicing cupidatat mollit in
-          nostrud laborum. Esse eu sit pariatur exercitation laborum nulla
-          eiusmod anim sunt. Cillum velit anim nostrud excepteur ea. Qui do
-          veniam eiusmod nulla commodo nisi incididunt reprehenderit culpa quis
-          commodo culpa do. Minim excepteur aliquip Lorem duis pariatur laboris
-          nulla ad ad minim. Incididunt incididunt eu do laborum et veniam
-          laboris est ea aute dolore.
+          <h3>MoviesDatabase</h3>
+          <p>
+            MoviesDatabase provides complete and updated data for over 9 million
+            titles ( movies, series and episodes) and 11 million actors / crew
+            and cast members. Movies raiting, image, title, genre etc.
+          </p>
         </div>
       </div>
 

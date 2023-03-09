@@ -40,8 +40,8 @@ function Navbar() {
           </div>
 
           <div id="logo">
-            <h1 style={{ cursor: "pointer" }}>Movie Reviews</h1>
-            <MdLocalMovies style={{ cursor: "pointer" }} />
+            <h1 className="logo-name">Movie Reviews</h1>
+            <MdLocalMovies />
           </div>
 
           <Slider />
@@ -55,6 +55,7 @@ function Navbar() {
               <p>Home</p>
             </Link>
             <Link to="/products">Products</Link>
+            <Link to="/about">About</Link>
           </div>
         ) : null}
 

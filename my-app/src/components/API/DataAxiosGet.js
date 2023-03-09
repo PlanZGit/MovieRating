@@ -11,17 +11,16 @@ function DataAxiosGet(props) {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    //HTTP GET
     axios
-      .get("https://mockend.com/PlanZGit/mockend/movies")
-      .then((response) => {
-        // console.log(response.data);
-        movieData = response.data;
+      .request(options)
+      .then(function (response) {
+        console.log(response.data.results);
+        movieData = response.data.results;
         setLoading(false);
       })
-      .catch((error) => {
+      .catch(function (error) {
+        console.error(error);
         setLoading(false);
-        setError(true);
       });
   }, []);
 
@@ -46,66 +45,20 @@ function DataAxiosGet(props) {
 
 export default DataAxiosGet;
 
-// //HTTP GET
-// const getAllData = () => {
-//   axios
-//     .get("https://mockend.com/PlanZGit/TodoList/movie")
-//     .then((response) => {
-//       console.log(response);
-//       setLoading(false);
-//       setError("OK!");
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//       setLoading(false);
-//       setError("ERROR");
-//     });
-// };
-
-// //HTTP GET (get one data by id)
-// const getData = () => {
-//   axios
-//     .get(`https://mockend.com/PlanZGit/TodoList/posts/${1}`)
-//     .then((response) => {
-//       console.log(response);
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// };
-
-// //HTTP POST (create a new data)
-// const postData = () => {
-//   axios
-//     .post(`https://jsonplaceholder.typicode.com/posts`, todos)
-//     .then((response) => {
-//       console.log(response);
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// };
-
-// //HTTP PUT (update one data by id)
-// const updateData = () => {
-//   axios
-//     .put(`https://mockend.com/PlanZGit/TodoList/posts/${1}`, todos[0])
-//     .then((response) => {
-//       console.log(response);
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// };
-
-// //HTTP DELETE (delete one data by id)
-// const deleteData = () => {
-//   axios
-//     .delete(`https://mockend.com/PlanZGit/TodoList/posts/${1}`)
-//     .then((response) => {
-//       console.log(response);
-//     })
-//     .catch((error) => {
-//       console.log(error);
-//     });
-// };
+const options = {
+  method: "GET",
+  url: "https://moviesdatabase.p.rapidapi.com/titles",
+  params: {
+    list: "most_pop_movies",
+    sort: "year.decr",
+    limit: "50",
+    endYear: "2022",
+    info: "base_info",
+    page: "1",
+    startYear: "2000",
+  },
+  headers: {
+    "X-RapidAPI-Key": "bbd82843bemshb2f78863fb137aep1bacf2jsn1f81c97442e0",
+    "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
+  },
+};

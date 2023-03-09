@@ -7,6 +7,7 @@ import Products from "./components/Products";
 import FeaturedProducts from "./components/FeaturedProducts";
 import NewProducts from "./components/NewProducts";
 import DataAxiosGet from "./components/API/DataAxiosGet";
+import About from "./about/About";
 
 export const SettingContext = React.createContext();
 
@@ -23,6 +24,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="*" element={<NoMatch />}></Route>
+            <Route path="/about" element={<About />}></Route>
 
             <Route path="/products" element={<Products />}>
               <Route index element={<FeaturedProducts />} />

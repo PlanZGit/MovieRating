@@ -15,8 +15,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 20px;
-
+  padding-bottom: 20px;
+  height: 50px;
   width: 100%;
 }
 
@@ -31,9 +31,11 @@
   justify-content: center;
   align-items: center;
 }
-.primary-nav #header #logo {
-  font-size: 24px;
+
+.primary-nav #header #logo .logo-name {
+  width: 25vw;
 }
+
 .primary-nav #header #logo svg {
   width: 48px;
   height: 48px;
