@@ -8,6 +8,7 @@ import FeaturedProducts from "./components/FeaturedProducts";
 import NewProducts from "./components/NewProducts";
 import DataAxiosGet from "./components/API/DataAxiosGet";
 import About from "./about/About";
+import BackToTop from "./components/BackToTop/BackToTop";
 
 export const SettingContext = React.createContext();
 
@@ -21,6 +22,7 @@ function App() {
       <DataAxiosGet>
         <SettingContext.Provider value={setting}>
           <Navbar />
+          <BackToTop />
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="*" element={<NoMatch />}></Route>

@@ -11,18 +11,20 @@ function DataAxiosGet(props) {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    axios
-      .request(options)
-      .then(function (response) {
-        console.log(response.data.results);
-        movieData = response.data.results;
-        setLoading(false);
-      })
-      .catch(function (error) {
-        console.error(error);
-        setLoading(false);
-        setError(true);
-      });
+    if (movieData.length <= 0) {
+      axios
+        .request(options)
+        .then(function (response) {
+          // console.log(response.data.results);
+          movieData = response.data.results;
+          setLoading(false);
+        })
+        .catch(function (error) {
+          console.error(error);
+          setLoading(false);
+          setError(true);
+        });
+    }
   }, []);
 
   return (
