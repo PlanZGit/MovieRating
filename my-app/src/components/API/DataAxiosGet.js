@@ -21,6 +21,7 @@ function DataAxiosGet(props) {
       .catch(function (error) {
         console.error(error);
         setLoading(false);
+        setError(true);
       });
   }, []);
 
