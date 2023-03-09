@@ -24,11 +24,11 @@ function App() {
           <Navbar />
           <BackToTop />
           <Routes>
-            <Route path="/" element={<Home />}></Route>
+            <Route path="/MovieReview" element={<Home />}></Route>
             <Route path="*" element={<NoMatch />}></Route>
-            <Route path="/about" element={<About />}></Route>
+            <Route path="/MovieReview/about" element={<About />}></Route>
 
-            <Route path="/products" element={<Products />}>
+            <Route path="/MovieReview/products" element={<Products />}>
               <Route index element={<FeaturedProducts />} />
               <Route path="feature" element={<FeaturedProducts />}></Route>
               <Route path="new" element={<NewProducts />}></Route>

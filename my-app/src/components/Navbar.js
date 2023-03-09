@@ -51,11 +51,11 @@ function Navbar() {
             className="menu-list"
             style={displayMenu ? showStyle : hideStyle}
           >
-            <Link to="/">
+            <Link to="/MovieReview">
               <p>Home</p>
             </Link>
-            <Link to="/products">Products</Link>
-            <Link to="/about">About</Link>
+            <Link to="/MovieReview/products">Products</Link>
+            <Link to="/MovieReview/about">About</Link>
           </div>
         ) : null}
 
