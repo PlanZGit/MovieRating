@@ -26,7 +26,7 @@ function DataAxiosGet(props) {
         });
     }
   }, []);
-
+  // console.log(CacheStorage);
   return (
     //Pass movieData as useContext, if fetch data fail, return error, else load page
     <MovieContext.Provider value={movieData}>
