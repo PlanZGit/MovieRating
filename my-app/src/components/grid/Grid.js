@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { MovieContext } from "../API/DataAxiosGet";
 import "./Grid.css";
 
@@ -23,11 +24,14 @@ function Grid() {
 
         return (
           <div className="flex-container" key={obj.id}>
-            <img
-              className="image"
-              alt={titleText["text"]}
-              src={primaryImage["url"]}
-            ></img>
+            <Link to={`/MovieReview/MovieDetail/${obj.id}`}>
+              <img
+                className="image"
+                alt={titleText["text"]}
+                src={primaryImage["url"]}
+              ></img>
+            </Link>
+
             <div className="title">{titleText["text"]}</div>
             <div
               className="rate"

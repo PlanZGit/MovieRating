@@ -1,10 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import "./Search.css";
 import { GoSearch } from "react-icons/go";
 import { MovieContext } from "../API/DataAxiosGet";
+import { SettingContext } from "../../App";
 
 function Search() {
   const movies = useContext(MovieContext);
+  const setting = useContext(SettingContext);
+  const inputRef = useRef(null);
   const [filterMovies, setFilterMovies] = useState([]);
 
   const handleChange = (e) => {
@@ -13,79 +17,112 @@ function Search() {
       let dropDown = document.getElementById("search-dropdown-movie");
       dropDown.style.display = "block";
     } else {
-      handleBlur(e);
+      reset();
     }
 
     //filter search , grab only top 5
     let filterArray = movies.filter((obj) =>
       obj.titleText["text"].toLowerCase().includes(e.target.value.toLowerCase())
     );
-    filterArray.length = 5;
+    if (filterArray.length > 5) {
+      filterArray.length = 5;
+    }
 
     //set results
     setFilterMovies(filterArray);
   };
 
-  const handleBlur = (e) => {
+  const reset = () => {
     //clear input value, clear filterMovies, display none
-    e.target.value = "";
-    let dropDown = document.getElementById("search-dropdown-movie");
-    dropDown.style.display = "none";
-    setFilterMovies([]);
+    // console.log(e.target);
+    // console.log("blur");
+    if (
+      document.getElementById("search-dropdown-movie").style.display === "block"
+    ) {
+      inputRef.current.value = "";
+      setFilterMovies([]);
+      let dropDown = document.getElementById("search-dropdown-movie");
+      dropDown.style.display = "none";
+    }
   };
+
+  useEffect(() => {
+    document.addEventListener("click", reset);
+    return () => {
+      document.removeEventListener("click", reset);
+    };
+  }, []);
 
   //TODO
   // Need to add a page filter
   // MovieReview/search/filter="sup"
   return (
-    <div>
-      <div className="search-container">
+    <section name="form">
+      <form className="search-container">
         <input
           placeholder="Search"
           onChange={(e) => handleChange(e)}
-          onBlur={(e) => {
-            handleBlur(e);
-          }}
+          ref={inputRef}
         />
 
-        {/* icon */}
+        {/* react icon */}
         <GoSearch />
+        {/* <Link to="/MovieReview/products">Products</Link> */}
 
-        <div className="search-dropdown-movie" id="search-dropdown-movie">
+        <div
+          className="search-dropdown-movie"
+          id="search-dropdown-movie"
+          style={{
+            backgroundColor: setting.color ? "rgb(37, 37, 37)" : "white",
+          }}
+        >
           <div className="search-parent-container">
             {filterMovies.map((obj) => {
               return (
-                <div className="child-container" key={obj.id}>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to={`/MovieReview/MovieDetail/${obj.id}`}
+                  className="child-container"
+                  key={obj.id}
+                  onClick={() => reset()}
+                >
                   <img
                     src={obj.primaryImage["url"]}
                     alt="img"
                     className="search-dropdown-movie-img"
                   ></img>
 
-                  <div className="search-dropdown-movie-details">Details</div>
-                </div>
+                  <div
+                    className="search-dropdown-movie-details"
+                    style={{
+                      color: setting.color ? "white" : "",
+                    }}
+                  >
+                    <p style={{ fontWeight: "bold" }}>
+                      {obj.titleText["text"]}
+                    </p>
+                    <p style={{ fontSize: "12px" }}>
+                      {obj.releaseDate["year"]} &#x2022;
+                      {obj.runtime["seconds"] / 60}
+                      mins
+                    </p>
+                  </div>
+                </Link>
               );
             })}
 
-            {/* 
-            <div className="child-container">
-              <div className="search-dropdown-movie-img">IMG</div>
-              <div className="search-dropdown-movie-details">
-                <p>
-                  Test as asd asd asd asd asd <br /> asd a sd as d asd a sd
-                  asdal
-                </p>
-              </div>
-            </div> */}
-
-            {/* if more then 5 */}
-            {/* <a href="#" className="view-all">
-              View all Results
-            </a> */}
+            {filterMovies.length > 4 ? (
+              <Link
+                to={`/MovieReview/search/${inputRef.current.value}`}
+                className="view-all"
+              >
+                View all Results
+              </Link>
+            ) : null}
           </div>
         </div>
-      </div>
-    </div>
+      </form>
+    </section>
   );
 }
 
