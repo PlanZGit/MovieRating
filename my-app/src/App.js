@@ -7,8 +7,10 @@ import Products from "./components/Products";
 import FeaturedProducts from "./components/FeaturedProducts";
 import NewProducts from "./components/NewProducts";
 import DataAxiosGet from "./components/API/DataAxiosGet";
-import About from "./about/About";
+import About from "./components/about/About";
 import BackToTop from "./components/BackToTop/BackToTop";
+import MovieDetail from "./components/movie/MovieDetail";
+import SearchResults from "./components/search/SearchResults";
 
 export const SettingContext = React.createContext();
 
@@ -25,9 +27,18 @@ function App() {
           <BackToTop />
           <Routes>
             <Route path="/MovieReview" element={<Home />}></Route>
-            <Route path="*" element={<NoMatch />}></Route>
             <Route path="/MovieReview/about" element={<About />}></Route>
+            <Route
+              path="/MovieReview/search/:string"
+              element={<SearchResults />}
+            ></Route>
 
+            <Route path="*" element={<NoMatch />}></Route>
+
+            <Route
+              path="/MovieReview/MovieDetail/:id"
+              element={<MovieDetail />}
+            />
             <Route path="/MovieReview/products" element={<Products />}>
               <Route index element={<FeaturedProducts />} />
               <Route path="feature" element={<FeaturedProducts />}></Route>

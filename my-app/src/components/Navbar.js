@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdLocalMovies } from "react-icons/md";
@@ -6,37 +6,25 @@ import "./Navbar.css";
 import Slider from "./slider/Slider.js";
 import Search from "./search/Search";
 
-let renderMENU = false;
-
 function Navbar() {
   const [displayMenu, setDisplayMenu] = useState(false);
-
-  useEffect(() => {
-    renderMENU = true;
-  }, []);
+  const menuRef = useRef(null);
 
   const handleDisplayToggle = () => {
     setDisplayMenu(!displayMenu);
-  };
-
-  const showStyle = {
-    animation: "growDown .15s ease-out 0s 1 normal forwards",
-  };
-
-  const hideStyle = {
-    animation: "shrinkDown .4s ease-out 0s 1 normal forwards",
   };
 
   return (
     <nav className="primary-nav">
       <div id="wrapper">
         <div id="header">
-          <div id="menu-icon">
-            <AiOutlineMenu
-              onClick={() => {
-                handleDisplayToggle();
-              }}
-            ></AiOutlineMenu>
+          <div
+            id="menu-icon"
+            onClick={() => {
+              handleDisplayToggle();
+            }}
+          >
+            <AiOutlineMenu></AiOutlineMenu>
           </div>
 
           <div id="logo">
@@ -46,18 +34,20 @@ function Navbar() {
 
           <Slider />
         </div>
-        {renderMENU ? (
-          <div
-            className="menu-list"
-            style={displayMenu ? showStyle : hideStyle}
-          >
-            <Link to="/MovieReview">
-              <p>Home</p>
-            </Link>
-            <Link to="/MovieReview/products">Products</Link>
-            <Link to="/MovieReview/about">About</Link>
-          </div>
-        ) : null}
+
+        <div
+          id="menu-list"
+          className={displayMenu ? "menu-list-active" : "menu-list"}
+          onBlur={() => {
+            handleDisplayToggle();
+          }}
+        >
+          <Link id="home" to="/MovieReview">
+            Home
+          </Link>
+          <Link to="/MovieReview/products">Products</Link>
+          <Link to="/MovieReview/about">About</Link>
+        </div>
 
         <Search />
       </div>
