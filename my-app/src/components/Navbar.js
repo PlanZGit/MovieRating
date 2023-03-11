@@ -6,25 +6,11 @@ import "./Navbar.css";
 import Slider from "./slider/Slider.js";
 import Search from "./search/Search";
 
-let renderMENU = false;
-
 function Navbar() {
   const [displayMenu, setDisplayMenu] = useState(false);
 
-  useEffect(() => {
-    renderMENU = true;
-  }, []);
-
   const handleDisplayToggle = () => {
     setDisplayMenu(!displayMenu);
-  };
-
-  const showStyle = {
-    animation: "growDown .15s ease-out 0s 1 normal forwards",
-  };
-
-  const hideStyle = {
-    animation: "shrinkDown .4s ease-out 0s 1 normal forwards",
   };
 
   return (
@@ -46,18 +32,12 @@ function Navbar() {
 
           <Slider />
         </div>
-        {renderMENU ? (
-          <div
-            className="menu-list"
-            style={displayMenu ? showStyle : hideStyle}
-          >
-            <Link to="/MovieReview">
-              <p>Home</p>
-            </Link>
-            <Link to="/MovieReview/products">Products</Link>
-            <Link to="/MovieReview/about">About</Link>
-          </div>
-        ) : null}
+
+        <div className={displayMenu ? "menu-list-active" : "menu-list"}>
+          <Link to="/MovieReview">Home</Link>
+          <Link to="/MovieReview/products">Products</Link>
+          <Link to="/MovieReview/about">About</Link>
+        </div>
 
         <Search />
       </div>
