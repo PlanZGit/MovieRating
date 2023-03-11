@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdLocalMovies } from "react-icons/md";
@@ -8,7 +8,6 @@ import Search from "./search/Search";
 
 function Navbar() {
   const [displayMenu, setDisplayMenu] = useState(false);
-  const menuRef = useRef(null);
 
   const handleDisplayToggle = () => {
     setDisplayMenu(!displayMenu);
@@ -38,9 +37,6 @@ function Navbar() {
         <div
           id="menu-list"
           className={displayMenu ? "menu-list-active" : "menu-list"}
-          onBlur={() => {
-            handleDisplayToggle();
-          }}
         >
           <Link id="home" to="/MovieReview">
             Home
