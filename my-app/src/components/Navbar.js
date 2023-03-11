@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdLocalMovies } from "react-icons/md";
@@ -8,6 +8,7 @@ import Search from "./search/Search";
 
 function Navbar() {
   const [displayMenu, setDisplayMenu] = useState(false);
+  const menuRef = useRef(null);
 
   const handleDisplayToggle = () => {
     setDisplayMenu(!displayMenu);
@@ -17,12 +18,13 @@ function Navbar() {
     <nav className="primary-nav">
       <div id="wrapper">
         <div id="header">
-          <div id="menu-icon">
-            <AiOutlineMenu
-              onClick={() => {
-                handleDisplayToggle();
-              }}
-            ></AiOutlineMenu>
+          <div
+            id="menu-icon"
+            onClick={() => {
+              handleDisplayToggle();
+            }}
+          >
+            <AiOutlineMenu></AiOutlineMenu>
           </div>
 
           <div id="logo">
@@ -33,8 +35,16 @@ function Navbar() {
           <Slider />
         </div>
 
-        <div className={displayMenu ? "menu-list-active" : "menu-list"}>
-          <Link to="/MovieReview">Home</Link>
+        <div
+          id="menu-list"
+          className={displayMenu ? "menu-list-active" : "menu-list"}
+          onBlur={() => {
+            handleDisplayToggle();
+          }}
+        >
+          <Link id="home" to="/MovieReview">
+            Home
+          </Link>
           <Link to="/MovieReview/products">Products</Link>
           <Link to="/MovieReview/about">About</Link>
         </div>

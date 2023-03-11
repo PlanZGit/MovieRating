@@ -34,8 +34,6 @@ function Search() {
 
   const reset = () => {
     //clear input value, clear filterMovies, display none
-    // console.log(e.target);
-    // console.log("blur");
     if (
       document.getElementById("search-dropdown-movie").style.display === "block"
     ) {
@@ -53,9 +51,6 @@ function Search() {
     };
   }, []);
 
-  //TODO
-  // Need to add a page filter
-  // MovieReview/search/filter="sup"
   return (
     <section name="form">
       <form className="search-container">

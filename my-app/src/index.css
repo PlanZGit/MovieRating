@@ -36,4 +36,5 @@ p {
 svg {
   width: 30px;
   height: 30px;
+  user-select: none;
 }
