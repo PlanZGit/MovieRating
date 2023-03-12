@@ -54,7 +54,7 @@ const options = {
   params: {
     list: "most_pop_movies",
     sort: "year.decr",
-    limit: "50",
+    limit: "20",
     endYear: "2022",
     info: "base_info",
     page: "1",
