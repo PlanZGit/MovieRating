@@ -3,12 +3,11 @@ import React, { useEffect, useState } from "react";
 import "./DataAxiosGet.css";
 export const MovieContext = React.createContext();
 
-let movieData = [];
-
 function DataAxiosGet(props) {
   const { children } = props;
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [payload, setPayload] = useState([]);
 
   const options = {
     method: "GET",
@@ -28,25 +27,25 @@ function DataAxiosGet(props) {
   };
 
   useEffect(() => {
-    if (movieData.length <= 0) {
-      axios
-        .request(options)
-        .then(function (response) {
-          // console.log(response.data.results);
-          movieData = response.data.results;
-          setLoading(false);
-        })
-        .catch(function (error) {
-          console.error(error);
-          setLoading(false);
-          setError(true);
-        });
-    }
+    axios
+      .request(options)
+      .then(function (response) {
+        // console.log(response.data.results);
+        setPayload(response.data.results);
+        setLoading(false);
+      })
+      .catch(function (error) {
+        console.error(error);
+        setLoading(false);
+        setError(true);
+      });
+    // eslint-disable-next-line
   }, []);
+
   // console.log(CacheStorage);
   return (
     //Pass movieData as useContext, if fetch data fail, return error, else load page
-    <MovieContext.Provider value={movieData}>
+    <MovieContext.Provider value={payload}>
       {loading ? (
         <div className="flex-center">
           <h1>Loading...</h1>

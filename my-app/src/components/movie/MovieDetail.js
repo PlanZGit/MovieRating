@@ -12,9 +12,8 @@ function MovieDetail() {
   useEffect(() => {
     let filter = movies.filter((obj) => obj.id === id);
     setMovie(filter);
+    // eslint-disable-next-line
   }, [id]);
-
-  console.log(movie);
 
   return (
     <section className="movie-page">
@@ -45,12 +44,7 @@ function MovieDetail() {
                   <div>
                     Genre:
                     {movie[0].genres.genres.map((ele) => {
-                      return (
-                        <React.Fragment key={ele.id}>
-                          {" "}
-                          {ele.text}
-                        </React.Fragment>
-                      );
+                      return <Fragment key={ele.id}> {ele.text}</Fragment>;
                     })}
                   </div>
                 </div>

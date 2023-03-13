@@ -10,8 +10,8 @@ function Grid() {
 
   useEffect(() => {
     let newArray = movieList.map((obj) => obj);
-    newArray.length = 20;
     setMovies(newArray);
+    // eslint-disable-next-line
   }, []);
 
   return (
