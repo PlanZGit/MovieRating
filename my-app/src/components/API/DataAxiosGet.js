@@ -10,6 +10,23 @@ function DataAxiosGet(props) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
+  const options = {
+    method: "GET",
+    url: "https://moviesdatabase.p.rapidapi.com/titles",
+    params: {
+      list: "most_pop_movies",
+      sort: "year.decr",
+      limit: "25",
+      info: "base_info",
+      page: "1",
+      startYear: "2000",
+    },
+    headers: {
+      "X-RapidAPI-Key": "bbd82843bemshb2f78863fb137aep1bacf2jsn1f81c97442e0",
+      "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
+    },
+  };
+
   useEffect(() => {
     if (movieData.length <= 0) {
       axios
@@ -47,21 +64,3 @@ function DataAxiosGet(props) {
 }
 
 export default DataAxiosGet;
-
-const options = {
-  method: "GET",
-  url: "https://moviesdatabase.p.rapidapi.com/titles",
-  params: {
-    list: "most_pop_movies",
-    sort: "year.decr",
-    limit: "20",
-    endYear: "2022",
-    info: "base_info",
-    page: "1",
-    startYear: "2000",
-  },
-  headers: {
-    "X-RapidAPI-Key": "bbd82843bemshb2f78863fb137aep1bacf2jsn1f81c97442e0",
-    "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
-  },
-};

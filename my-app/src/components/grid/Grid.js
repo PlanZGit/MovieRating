@@ -1,14 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MovieContext } from "../API/DataAxiosGet";
 import "./Grid.css";
 
 function Grid() {
-  const movies = useContext(MovieContext);
+  const movieList = useContext(MovieContext);
+  const [movies, setMovies] = useState([]);
   // console.log(movies);
 
-  //Create sort bar .. type genra
-  //Create Hover,
+  useEffect(() => {
+    let newArray = movieList.map((obj) => obj);
+    newArray.length = 20;
+    setMovies(newArray);
+  }, []);
 
   return (
     <div className="flex">

@@ -10,6 +10,7 @@ body {
   color: white;
   text-align: center;
   transition: 0.4s;
+  /* scroll-behavior: smooth; */
 }
 
 .dark-mode {
