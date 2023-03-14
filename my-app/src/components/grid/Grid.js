@@ -1,42 +1,43 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { MovieContext } from "../API/DataAxiosGet";
+
 import "./Grid.css";
 
-function Grid() {
-  const movieList = useContext(MovieContext);
-  const [movies, setMovies] = useState([]);
-  // console.log(movies);
+function Grid(props) {
+  const { movies } = props;
 
-  useEffect(() => {
-    let newArray = movieList.map((obj) => obj);
-    setMovies(newArray);
-    // eslint-disable-next-line
-  }, []);
-
+  // console.log(movies, " Grid");
   return (
     <div className="flex">
       {movies.map((obj) => {
-        const { titleText, primaryImage } = obj;
-        let rate = obj.ratingsSummary["aggregateRating"];
-        let color =
-          rate > 5
-            ? "rgb(189, 215, 60)"
-            : rate > 3
-            ? "rgb(215, 135, 60)"
-            : "rgb(215, 60, 60)";
+        let color = "rgb(189, 215, 60)";
+        let rate = "N/A";
+        let image = "NA";
+
+        if (obj.primaryImage != null) {
+          image = obj.primaryImage.url;
+        }
+
+        if (typeof obj.ratingsSummary !== "undefined") {
+          rate = obj.ratingsSummary["aggregateRating"];
+        }
+
+        if (typeof rate === "number") {
+          color =
+            rate > 5
+              ? "rgb(189, 215, 60)"
+              : rate > 3
+              ? "rgb(215, 135, 60)"
+              : "rgb(215, 60, 60)";
+        }
 
         return (
           <div className="flex-container" key={obj.id}>
             <Link to={`/MovieReview/MovieDetail/${obj.id}`}>
-              <img
-                className="image"
-                alt={titleText["text"]}
-                src={primaryImage["url"]}
-              ></img>
+              <img className="image" alt={obj.titleText.text} src={image}></img>
             </Link>
 
-            <div className="title">{titleText["text"]}</div>
+            <div className="title">{obj.titleText.text}</div>
             <div
               className="rate"
               style={{

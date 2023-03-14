@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { MovieContext } from "../API/DataAxiosGet";
 import "./MovieDetail.css";
 
-function MovieDetail() {
+function MovieTemplate() {
   //currently only searching through limit 50 movies
   const movies = useContext(MovieContext);
   let { id } = useParams();
@@ -62,4 +62,4 @@ function MovieDetail() {
   );
 }
 
-export default MovieDetail;
+export default MovieTemplate;

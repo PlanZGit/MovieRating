@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Grid from "./grid/Grid";
 import "./Home.css";
+import { MovieContext } from "./API/DataAxiosGet";
 
 function Home() {
+  const movieList = useContext(MovieContext);
+
   return (
     <div>
       <div className="parent-container">
@@ -26,7 +29,7 @@ function Home() {
         </div>
       </div>
 
-      <Grid />
+      <Grid movies={movieList} />
     </div>
   );
 }

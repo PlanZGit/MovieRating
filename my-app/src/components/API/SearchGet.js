@@ -2,7 +2,7 @@ import axios from "axios";
 
 import React, { useEffect, useState } from "react";
 
-function Search() {
+function SearchGet() {
   const [input, setInput] = useState("");
 
   const options = {
@@ -34,4 +34,4 @@ function Search() {
   return <div>Search</div>;
 }
 
-export default Search;
+export default SearchGet;
