@@ -4,13 +4,10 @@ import { useParams, NavLink, Outlet } from "react-router-dom";
 import { GrCaretNext, GrCaretPrevious } from "react-icons/gr"
 import { FaPagelines } from "react-icons/fa"
 import "./Upcoming.css"
-import { useNavigate } from "react-router-dom";
-
 
 export const Upcoming = () => {
   const { getData, page } = useContext(UpcomingContext);
   const { id } = useParams()
-  const navigation = useNavigate()
   const maxPage = 32;
   const [errorInput, setErrorInput] = useState("")
 
@@ -31,7 +28,7 @@ export const Upcoming = () => {
   const enterInput = (e) => {
     if (e.key === "Enter") {
       const value = Number(e.target.value);
-      value ? (value < 33 && value != 0) ? clearErrorChangePage(value)
+      value ? (value < 33 && value !== 0) ? clearErrorChangePage(value)
         : setErrorInput("Number is to high or Low!")
         : setErrorInput("Letter is not allow!")
     }
