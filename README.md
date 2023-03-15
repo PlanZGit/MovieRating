@@ -34,13 +34,4 @@ React, React Icons library, Axios, Rapid API, MoviesDatabase API
 
 # Progress
 
-Done
-
-- Finished Header Design
-- Working Black and Whate Theme
-
-Working on
-
-- Add Movie Page detailing the rest of information
-- Let Grid be Feature and Display it at Home Page
-- Add New Movies to New Page
+![Preview](./Preview.png)
