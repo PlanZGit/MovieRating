@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
-import "./DataAxiosGet.css";
+import { Loading } from "./Loading";
 export const MovieContext = createContext(null);
 
 function DataAxiosGet(props) {
@@ -49,12 +49,7 @@ function DataAxiosGet(props) {
     //Pass movieData as useContext, if fetch data fail, return error, else load page
     <MovieContext.Provider value={payload}>
       {loading ? (
-        <div className="flex-center">
-          <h1>Loading...</h1>
-          <div className="circle-animation22">
-            <div className="circle-animation22"></div>
-          </div>
-        </div>
+        <Loading />
       ) : error ? (
         <h1>ERROR</h1>
       ) : (

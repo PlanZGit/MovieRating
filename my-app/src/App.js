@@ -3,8 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import NoMatch from "./components/NoMatch";
-import Products from "./components/movie/Products";
-
+import Page from "./components/movie/Page";
 import UpcomingGet from "./components/API/UpcomingGet";
 import DataAxiosGet from "./components/API/DataAxiosGet";
 import About from "./components/about/About";
@@ -42,13 +41,12 @@ function App() {
                 path="/MovieReview/MovieDetail/:id"
                 element={<MovieDetail />}
               />
-              <Route path="/MovieReview/products" element={<Products />}>
-                <Route index element={<Upcoming />} />
 
-                <Route path="upcoming" element={<Upcoming />}>
-                  <Route path=":id"> </Route>
-                </Route>
+              <Route index element={<Upcoming />} />
+              <Route path="/MovieReview/upcoming" element={<Upcoming />}>
+                <Route path=":id" element={<Page />}> </Route>
               </Route>
+
             </Routes>
           </SettingContext.Provider>
         </UpcomingGet>

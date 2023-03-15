@@ -88,10 +88,11 @@
   pointer-events: none;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   .flex {
     gap: 10px;
   }
+
   .flex-container {
     /* height: 353px;
     width: 200px; */
@@ -99,6 +100,7 @@
     width: 150px;
     height: 305px;
   }
+
   .flex-container a {
     /* height: 290px; */
 

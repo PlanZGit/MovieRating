@@ -41,7 +41,7 @@ function Navbar() {
           <Link id="home" to="/MovieReview">
             Home
           </Link>
-          <Link to="/MovieReview/products">Movies</Link>
+          <Link to="/MovieReview/upcoming/1">Upcoming Movies</Link>
           <Link to="/MovieReview/about">About</Link>
         </div>
 
