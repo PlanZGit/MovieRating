@@ -4,8 +4,8 @@ function Products() {
   return (
     <div>
       <nav style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
-        <Link to="feature">Featured</Link>
-        <Link to="new">New</Link>
+
+        <Link to="upcoming">Upcoming</Link>
       </nav>
       <Outlet />
     </div>

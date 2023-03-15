@@ -22,12 +22,12 @@
 }
 
 .flex-container a {
+  background-color: rgb(124, 124, 124);
   height: 290px;
   width: inherit;
 }
 
 .flex-container .image {
-  background-color: rgb(124, 124, 124);
   /* flex: 5; */
   height: inherit;
   width: inherit;

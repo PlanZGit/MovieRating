@@ -1,16 +1,17 @@
 .movie-page {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 
   gap: 10px;
   margin: 32px;
-  flex-wrap: wrap;
+
   text-align: start;
 }
 
 .wrapper {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
 
   gap: 10px;
   /* margin: 32px; */
