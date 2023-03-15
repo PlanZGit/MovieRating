@@ -16,7 +16,11 @@ function MovieTemplate() {
 
   useEffect(() => {
     let filterL = latestMovies.filter((obj) => obj.id === id);
-    let filterU = upcomingMovies.state.payload.filter((obj) => obj.id === id);
+    let filterU;
+    if (upcomingMovies.state.payload.length > 0){
+      filterU = upcomingMovies.state.payload.filter((obj) => obj.id === id);
+    }
+ 
 
     (filterL.length > 0 ? setMovie(filterL) : filterU.length > 0 ? setMovie(filterU): console.log("No Match"))
     // eslint-disable-next-line
