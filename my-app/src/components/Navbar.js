@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdLocalMovies } from "react-icons/md";
 import "./Navbar.css";
-import Slider from "./slider/Slider.js";
+import DarkMode from "./dark-mode/DarkMode.js";
 import Search from "./search/Search";
 
 function Navbar() {
@@ -31,7 +31,7 @@ function Navbar() {
             <MdLocalMovies />
           </div>
 
-          <Slider />
+          <DarkMode />
         </div>
 
         <div

@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import "./slider.css";
+import "./DarkMode.css";
 import { AiFillSetting } from "react-icons/ai";
 import { SettingContext } from "../../App.js";
 
-function Slider() {
+function DarkMode() {
   const setting = useContext(SettingContext);
 
   const handleBackGroundColor = (e) => {
@@ -26,4 +26,4 @@ function Slider() {
   );
 }
 
-export default Slider;
+export default DarkMode;

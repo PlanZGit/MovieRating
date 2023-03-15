@@ -4,7 +4,7 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import NoMatch from "./components/NoMatch";
 import Products from "./components/movie/Products";
-import Featured from "./components/movie/Featured";
+
 import UpcomingGet from "./components/API/UpcomingGet";
 import DataAxiosGet from "./components/API/DataAxiosGet";
 import About from "./components/about/About";
@@ -43,9 +43,11 @@ function App() {
                 element={<MovieDetail />}
               />
               <Route path="/MovieReview/products" element={<Products />}>
-                <Route index element={<Featured />} />
-                <Route path="feature" element={<Featured />}></Route>
-                <Route path="upcoming" element={<Upcoming />}></Route>
+                <Route index element={<Upcoming />} />
+
+                <Route path="upcoming" element={<Upcoming />}>
+                  <Route path=":id"> </Route>
+                </Route>
               </Route>
             </Routes>
           </SettingContext.Provider>
