@@ -27,8 +27,8 @@ function Grid(props) {
             rate > 5
               ? "rgb(189, 215, 60)"
               : rate > 3
-              ? "rgb(215, 135, 60)"
-              : "rgb(215, 60, 60)";
+                ? "rgb(215, 135, 60)"
+                : "rgb(215, 60, 60)";
         }
 
         return (

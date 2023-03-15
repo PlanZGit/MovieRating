@@ -5,6 +5,7 @@
   position: relative;
   font-size: 16px;
 }
+
 .search-container input {
   flex: 1;
   text-align: center;
@@ -28,7 +29,7 @@
   max-height: 350px;
 
   background-color: rgb(255, 255, 255);
-  z-index: 1;
+  z-index: 2;
 }
 
 .search-parent-container {

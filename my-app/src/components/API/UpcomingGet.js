@@ -37,8 +37,9 @@ const UpcomingGet = ({ children }) => {
   const [page, setPage] = useState(0)
 
   const getData = (newPage) => {
+
     // console.log(page, newPage)
-    if (page !== newPage){
+    if (page !== newPage) {
       const options = {
         method: "GET",
         url: "https://moviesdatabase.p.rapidapi.com/titles/x/upcoming",
@@ -53,7 +54,7 @@ const UpcomingGet = ({ children }) => {
           "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
         },
       };
-  
+
       axios
         .request(options)
         .then(function (response) {
@@ -64,12 +65,12 @@ const UpcomingGet = ({ children }) => {
         .catch(function (error) {
           // console.error(error);
           dispatch({ type: "FETCH_ERROR" });
-        });  
-      }
+        });
+    }
   }
 
   return (
-    <UpcomingContext.Provider value={{state, getData, page}}>
+    <UpcomingContext.Provider value={{ state, getData, page }}>
       {children}
     </UpcomingContext.Provider>
   );
