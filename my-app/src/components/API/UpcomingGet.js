@@ -50,7 +50,7 @@ const UpcomingGet = ({ children }) => {
           page: `${newPage}`,
         },
         headers: {
-          "X-RapidAPI-Key": "bbd82843bemshb2f78863fb137aep1bacf2jsn1f81c97442e0",
+          "X-RapidAPI-Key": process.env.REACT_APP_KEY,
           "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
         },
       };
