@@ -8,7 +8,7 @@ import UpcomingGet from "./components/API/UpcomingGet";
 import DataAxiosGet from "./components/API/DataAxiosGet";
 import About from "./components/about/About";
 import BackToTop from "./components/BackToTop/BackToTop";
-import MovieDetail from "./components/movie/MovieTemplate";
+import MovieTemplate from "./components/movie/MovieTemplate";
 import SearchResults from "./components/search/SearchResults";
 import Upcoming from "./components/movie/Upcoming";
 
@@ -37,8 +37,8 @@ function App() {
               <Route path="*" element={<NoMatch />}></Route>
 
               <Route
-                path="/MovieRating/MovieDetail/:id"
-                element={<MovieDetail />}
+                path="/MovieRating/MovieTemplate/:id"
+                element={<MovieTemplate />}
               />
 
               <Route index element={<Upcoming />} />
