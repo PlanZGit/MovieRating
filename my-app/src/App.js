@@ -28,25 +28,23 @@ function App() {
             <Navbar />
             <BackToTop />
             <Routes>
-              <Route path="/MovieReview" element={<Home />}></Route>
-              <Route path="/MovieReview/about" element={<About />}></Route>
+              <Route path="/MovieRating" element={<Home />}></Route>
+              <Route path="/MovieRating/about" element={<About />}></Route>
               <Route
-                path="/MovieReview/search/:string"
-                element={<SearchResults />}
-              ></Route>
+                path="/MovieRating/search/:string"
+                element={<SearchResults />}></Route>
 
               <Route path="*" element={<NoMatch />}></Route>
 
               <Route
-                path="/MovieReview/MovieDetail/:id"
+                path="/MovieRating/MovieDetail/:id"
                 element={<MovieDetail />}
               />
 
               <Route index element={<Upcoming />} />
-              <Route path="/MovieReview/upcoming" element={<Upcoming />}>
-                <Route path=":id" element={<Page />}> </Route>
+              <Route path="/MovieRating/upcoming" element={<Upcoming />}>
+                <Route path=":id" element={<Page />}></Route>
               </Route>
-
             </Routes>
           </SettingContext.Provider>
         </UpcomingGet>
