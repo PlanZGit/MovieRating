@@ -27,13 +27,13 @@ function Grid(props) {
             rate > 5
               ? "rgb(189, 215, 60)"
               : rate > 3
-                ? "rgb(215, 135, 60)"
-                : "rgb(215, 60, 60)";
+              ? "rgb(215, 135, 60)"
+              : "rgb(215, 60, 60)";
         }
 
         return (
           <div className="flex-container" key={obj.id}>
-            <Link to={`/MovieReview/MovieDetail/${obj.id}`}>
+            <Link to={`/MovieRating/MovieTemplate/${obj.id}`}>
               <img className="image" alt={obj.titleText.text} src={image}></img>
             </Link>
 
@@ -42,8 +42,7 @@ function Grid(props) {
               className="rate"
               style={{
                 backgroundColor: color,
-              }}
-            >
+              }}>
               {rate}
             </div>
             <div className="released">{obj.releaseDate["year"]}</div>

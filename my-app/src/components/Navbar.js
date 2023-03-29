@@ -21,8 +21,7 @@ function Navbar() {
             id="menu-icon"
             onClick={() => {
               handleDisplayToggle();
-            }}
-          >
+            }}>
             <AiOutlineMenu></AiOutlineMenu>
           </div>
 
@@ -36,13 +35,12 @@ function Navbar() {
 
         <div
           id="menu-list"
-          className={displayMenu ? "menu-list-active" : "menu-list"}
-        >
-          <Link id="home" to="/MovieReview">
+          className={displayMenu ? "menu-list-active" : "menu-list"}>
+          <Link id="home" to="/MovieRating">
             Home
           </Link>
-          <Link to="/MovieReview/upcoming/1">Upcoming Movies</Link>
-          <Link to="/MovieReview/about">About</Link>
+          <Link to="/MovieRating/upcoming/1">Upcoming Movies</Link>
+          <Link to="/MovieRating/about">About</Link>
         </div>
 
         <Search />
