@@ -17,13 +17,12 @@ export const SettingContext = React.createContext();
 function App() {
   const setting = {
     color: false,
-    upcomingPage: 1,
   };
 
   return (
     <div>
       <DataAxiosGet>
-        <UpcomingGet page={setting.upcomingPage}>
+        <UpcomingGet>
           <SettingContext.Provider value={setting}>
             <Navbar />
             <BackToTop />
