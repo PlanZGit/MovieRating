@@ -1,11 +1,8 @@
-import React, { useContext } from "react";
-import Grid from "./grid/Grid";
+import React from "react";
 import "./Home.css";
-import { MovieContext } from "./API/DataAxiosGet";
+import { Outlet } from "react-router-dom";
 
 function Home() {
-  const movieList = useContext(MovieContext);
-
   return (
     <div>
       <div className="parent-container">
@@ -23,13 +20,13 @@ function Home() {
           <h3>MoviesDatabase</h3>
           <p>
             MoviesDatabase provides complete and updated data for over 9 million
-            titles ( movies, series and episodes) and 11 million actors / crew
+            titles (movies, series and episodes) and 11 million actors / crew
             and cast members. Movies raiting, image, title, genre etc.
           </p>
         </div>
       </div>
 
-      <Grid movies={movieList} />
+      <Outlet />
     </div>
   );
 }

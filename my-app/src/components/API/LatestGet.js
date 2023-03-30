@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import React, { useState, useReducer } from "react";
-export const UpcomingContext = React.createContext();
+export const LatestContext = React.createContext();
 
 const initialState = {
   loading: false,
@@ -36,11 +36,12 @@ const reducer = (state, action) => {
 //By creating the useState or useReducer , we re-render whenever we change router.
 // change route back to here cause a rerender by reseting the numbers
 
-const UpcomingGet = ({ children }) => {
+const LatestGet = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [page, setPage] = useState(0);
 
-  // console.log("render upcoming");
+  // console.log("render latest");
+
   //Get new Page Method , Cancel if loading or same page
   const getData = (newPage) => {
     if (state.loading) {
@@ -50,12 +51,14 @@ const UpcomingGet = ({ children }) => {
       dispatch({ type: "LOADING", loading: true });
       const options = {
         method: "GET",
-        url: "https://moviesdatabase.p.rapidapi.com/titles/x/upcoming",
+        url: "https://moviesdatabase.p.rapidapi.com/titles",
         params: {
-          titleType: "movie",
-          sort: "year.incr",
+          list: "most_pop_movies",
+          sort: "year.decr",
           limit: "25",
+          info: "base_info",
           page: `${newPage}`,
+          startYear: "2000",
         },
         headers: {
           "X-RapidAPI-Key": process.env.REACT_APP_KEY,
@@ -85,10 +88,10 @@ const UpcomingGet = ({ children }) => {
   };
 
   return (
-    <UpcomingContext.Provider value={{ state, getData, page }}>
+    <LatestContext.Provider value={{ state, getData, page }}>
       {children}
-    </UpcomingContext.Provider>
+    </LatestContext.Provider>
   );
 };
 
-export default UpcomingGet;
+export default LatestGet;

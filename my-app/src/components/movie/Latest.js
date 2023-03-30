@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from "react";
-import { UpcomingContext } from "../API/UpcomingGet";
+import { LatestContext } from "../API/LatestGet";
 import { useParams, Outlet } from "react-router-dom";
 import { ChangePage } from "../Controls/ChangePage";
 import Page from "../View/Page";
 
 export const Upcoming = () => {
-  const { state, getData, page } = useContext(UpcomingContext);
+  const { state, getData, page } = useContext(LatestContext);
   const { id } = useParams();
 
   //use the Params for user url page num search
