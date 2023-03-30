@@ -48,13 +48,7 @@ function DataAxiosGet(props) {
   return (
     //Pass movieData as useContext, if fetch data fail, return error, else load page
     <MovieContext.Provider value={payload}>
-      {loading ? (
-        <Loading />
-      ) : error ? (
-        <h1>ERROR</h1>
-      ) : (
-        children
-      )}
+      {loading ? <Loading /> : error ? <h1>ERROR</h1> : children}
     </MovieContext.Provider>
   );
 }

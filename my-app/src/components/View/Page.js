@@ -4,9 +4,8 @@ import { UpcomingContext } from "../API/UpcomingGet";
 
 import Grid from "./grid/Grid";
 
-const Page = () => {
-  const { state } = useContext(UpcomingContext);
-
+const Page = ({ state }) => {
+  // const { state } = useContext(UpcomingContext);
   return (
     <div>
       {state.payload.length > 0 ? (

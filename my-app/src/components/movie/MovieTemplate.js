@@ -2,7 +2,7 @@ import React, { Fragment, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MovieContext } from "../API/DataAxiosGet";
 import { UpcomingContext } from "../API/UpcomingGet";
-import "./MovieDetail.css";
+import "./MovieTemplate.css";
 
 //Fix URL , instead of loaded context , use API to grab ID of movies
 function MovieTemplate() {

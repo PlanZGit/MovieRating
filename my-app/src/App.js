@@ -5,12 +5,13 @@ import Navbar from "./components/Nav/Navbar";
 import NoMatch from "./components/NoMatch";
 import Page from "./components/View/Page";
 import UpcomingGet from "./components/API/UpcomingGet";
-import DataAxiosGet from "./components/API/DataAxiosGet";
 import About from "./components/About/About";
 import BackToTop from "./components/Controls/BackToTop/BackToTop";
 import MovieTemplate from "./components/movie/MovieTemplate";
 import SearchResults from "./components/Search/SearchResults";
 import Upcoming from "./components/movie/Upcoming";
+import Latest from "./components/movie/Latest";
+import LatestGet from "./components/API/LatestGet";
 
 export const SettingContext = React.createContext();
 
@@ -21,13 +22,22 @@ function App() {
 
   return (
     <div>
-      <DataAxiosGet>
+      <LatestGet>
         <UpcomingGet>
           <SettingContext.Provider value={setting}>
             <Navbar />
             <BackToTop />
+
             <Routes>
-              <Route path="/MovieRating" element={<Home />}></Route>
+              <Route path="/MovieRating" element={<Home />}>
+                <Route path="latest" element={<Latest />}>
+                  <Route path=":id"></Route>
+                </Route>
+                <Route path="upcoming" element={<Upcoming />}>
+                  <Route path=":id"></Route>
+                </Route>
+              </Route>
+
               <Route path="/MovieRating/about" element={<About />}></Route>
               <Route
                 path="/MovieRating/search/:string"
@@ -39,15 +49,11 @@ function App() {
                 path="/MovieRating/MovieTemplate/:id"
                 element={<MovieTemplate />}
               />
-
               <Route index element={<Upcoming />} />
-              <Route path="/MovieRating/upcoming" element={<Upcoming />}>
-                <Route path=":id" element={<Page />}></Route>
-              </Route>
             </Routes>
           </SettingContext.Provider>
         </UpcomingGet>
-      </DataAxiosGet>
+      </LatestGet>
     </div>
   );
 }

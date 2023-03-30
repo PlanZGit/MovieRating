@@ -46,23 +46,3 @@ a:hover {
   cursor: none;
   visibility: hidden;
 }
-
-@keyframes searchFocus {
-  from {
-    transform: scale(1) translateX(0px);
-  }
-
-  to {
-    transform: scale(1.1) translateX(155px);
-  }
-}
-
-@keyframes searchBlur {
-  from {
-    transform: scale(1.1) translateX(155px);
-  }
-
-  to {
-    transform: scale(1) translateX(0px);
-  }
-}

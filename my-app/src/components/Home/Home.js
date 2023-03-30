@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
-import Grid from "../View/grid/Grid";
+import React, { useEffect } from "react";
 import "./Home.css";
-import { MovieContext } from "../API/DataAxiosGet";
+import { Outlet, useNavigate } from "react-router-dom";
 
 function Home() {
-  const movieList = useContext(MovieContext);
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate("./latest");
+  }, []);
 
   return (
     <div>
@@ -23,13 +25,13 @@ function Home() {
           <h3>MoviesDatabase</h3>
           <p>
             MoviesDatabase provides complete and updated data for over 9 million
-            titles ( movies, series and episodes) and 11 million actors / crew
+            titles (movies, series and episodes) and 11 million actors / crew
             and cast members. Movies raiting, image, title, genre etc.
           </p>
         </div>
       </div>
 
-      <Grid movies={movieList} />
+      <Outlet />
     </div>
   );
 }

@@ -36,10 +36,10 @@ function Navbar() {
         <div
           id="menu-list"
           className={displayMenu ? "menu-list-active" : "menu-list"}>
-          <Link id="home" to="/MovieRating">
+          <Link id="home" to="/MovieRating/latest/1">
             Home
           </Link>
-          <Link to="/MovieRating/upcoming/1">Upcoming Movies</Link>
+          <Link to="/MovieRating/upcoming/1">Upcoming</Link>
           <Link to="/MovieRating/about">About</Link>
         </div>
 

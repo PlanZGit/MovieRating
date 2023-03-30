@@ -3,7 +3,7 @@ import { GrCaretNext, GrCaretPrevious } from "react-icons/gr";
 import { FaPagelines } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
-import "../movie/Upcoming.css";
+import "./ChangePage.css";
 
 export const ChangePage = ({ getData, state, page }) => {
   return (
