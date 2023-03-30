@@ -1,6 +1,5 @@
-import React, { Fragment, useContext, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import { getMovieById } from "../API/getMovieById";
 import "./MovieTemplate.css";
 import axios from "axios";
 
@@ -10,8 +9,6 @@ function MovieTemplate() {
 
   useEffect(() => {
     //API call id search, set obj to movie
-    // setMovie(getMovieById(id));
-    // console.log(id);
     const options = {
       method: "GET",
       url: `https://moviesdatabase.p.rapidapi.com/titles/${id}`,
@@ -30,12 +27,10 @@ function MovieTemplate() {
       })
       .catch(function (error) {
         // console.error(error);
-        // return false;
       });
     // eslint-disable-next-line
   }, [id]);
 
-  console.log(movie, id);
   return (
     <section className="movie-page">
       {Object.keys(movie)?.length > 0 ? (
@@ -98,5 +93,3 @@ function MovieTemplate() {
 }
 
 export default MovieTemplate;
-
-const getMovieById = (id) => {};

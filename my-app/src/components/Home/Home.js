@@ -1,15 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Home.css";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 function Home() {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    navigate("./latest");
-    // eslint-disable-next-line
-  }, []);
-
   return (
     <div>
       <div className="parent-container">

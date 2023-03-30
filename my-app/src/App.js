@@ -32,10 +32,10 @@ function App() {
             <Routes>
               <Route path="/MovieRating" element={<Home />}>
                 <Route path="latest" element={<Latest />}>
-                  <Route path=":id"></Route>
+                  <Route path=":id" element={<></>}></Route>
                 </Route>
                 <Route path="upcoming" element={<Upcoming />}>
-                  <Route path=":id"></Route>
+                  <Route path=":id" element={<></>}></Route>
                 </Route>
               </Route>
 
