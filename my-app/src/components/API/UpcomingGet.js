@@ -7,27 +7,27 @@ const initialState = {
   loading: false,
   error: "",
   payload: {},
-  maxPage: 5,
+  next: null,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "FETCH_SUCCESS":
       return {
-        loading: false,
-        payload: action.payload,
+        loading: action.loading,
+        payload: action.payload.results,
         error: "",
-        maxPage: 5,
+        next: action.payload.next,
       };
     case "FETCH_ERROR":
       return {
-        loading: false,
+        loading: action.loading,
         payload: {},
         error: "Something went wrong!",
-        maxPage: 5,
+        next: null,
       };
     case "LOADING":
-      return { ...state, loading: true };
+      return { ...state, loading: action.loading };
     default:
       return state;
   }
@@ -40,16 +40,13 @@ const UpcomingGet = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [page, setPage] = useState(0);
 
+  //Get new Page Method , Cancel if loading or same page
   const getData = (newPage) => {
-    // console.log(page, newPage)
-    // console.log(!state.loading);
-
     if (state.loading) {
       return;
     }
-
     if (page !== newPage) {
-      dispatch({ type: "LOADING" });
+      dispatch({ type: "LOADING", loading: true });
       const options = {
         method: "GET",
         url: "https://moviesdatabase.p.rapidapi.com/titles/x/upcoming",
@@ -64,17 +61,24 @@ const UpcomingGet = ({ children }) => {
           "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
         },
       };
-
       axios
         .request(options)
         .then(function (response) {
-          // console.log(response.data);
-          setPage(newPage);
-          dispatch({ type: "FETCH_SUCCESS", payload: response.data.results });
+          //Check if page exist or is there any data in page
+
+          if (response.data.entries > 0) {
+            setPage(newPage);
+            dispatch({
+              type: "FETCH_SUCCESS",
+              payload: response.data,
+              loading: false,
+            });
+          } else {
+            dispatch({ type: "LOADING", loading: false });
+          }
         })
         .catch(function (error) {
-          // console.error(error);
-          dispatch({ type: "FETCH_ERROR" });
+          dispatch({ type: "LOADING", loading: false });
         });
     }
   };

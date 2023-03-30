@@ -5,6 +5,9 @@
   text-align: center;
   gap: 5px;
 }
+.control a {
+  gap: 5px;
+}
 
 .pageNum {
   display: flex;
@@ -16,30 +19,11 @@
   position: relative;
 }
 
-.search {
-  display: flex;
-  gap: 5px;
-  position: absolute;
-  bottom: -25px;
-}
-
-.search .inputNum {
-  width: 3rem;
-  text-align: center;
-}
-
-.search .pageNum-icon {
-  position: absolute;
-  left: -30px;
-  top: -5px;
+.pageNum-icon {
   color: rgb(189, 215, 60);
   transition: 0.5s;
   z-index: -1;
   cursor: pointer;
-}
-
-a {
-  gap: 5px;
 }
 
 .next {
@@ -48,21 +32,13 @@ a {
   transition: 0.15s;
   z-index: 1;
 }
-
 .next:hover {
   background-color: rgba(189, 215, 60, 0.479);
   transition: 0.15s;
 }
-
 a:hover {
   color: rgb(189, 215, 60);
   transition: 0.2s;
-}
-
-.error {
-  position: absolute;
-  top: 150px;
-  color: rgb(189, 215, 60);
 }
 
 .notVisible {

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import Grid from "./grid/Grid";
+import Grid from "../View/grid/Grid";
 import "./Home.css";
-import { MovieContext } from "./API/DataAxiosGet";
+import { MovieContext } from "../API/DataAxiosGet";
 
 function Home() {
   const movieList = useContext(MovieContext);
