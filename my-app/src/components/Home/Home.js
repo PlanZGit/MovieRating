@@ -4,8 +4,10 @@ import { Outlet, useNavigate } from "react-router-dom";
 
 function Home() {
   const navigate = useNavigate();
+
   useEffect(() => {
     navigate("./latest");
+    // eslint-disable-next-line
   }, []);
 
   return (

@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Navbar from "./components/Nav/Navbar";
 import NoMatch from "./components/NoMatch";
+// eslint-disable-next-line
 import Page from "./components/View/Page";
 import UpcomingGet from "./components/API/UpcomingGet";
 import About from "./components/About/About";
@@ -42,14 +43,12 @@ function App() {
               <Route
                 path="/MovieRating/search/:string"
                 element={<SearchResults />}></Route>
-
-              <Route path="*" element={<NoMatch />}></Route>
-
               <Route
-                path="/MovieRating/MovieTemplate/:id"
+                path="MovieRating/MovieTemplate/:id"
                 element={<MovieTemplate />}
               />
-              <Route index element={<Upcoming />} />
+
+              <Route path="*" element={<NoMatch />}></Route>
             </Routes>
           </SettingContext.Provider>
         </UpcomingGet>

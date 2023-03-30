@@ -1,78 +1,83 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { MovieContext } from "../API/DataAxiosGet";
-import { UpcomingContext } from "../API/UpcomingGet";
+// import { getMovieById } from "../API/getMovieById";
 import "./MovieTemplate.css";
+import axios from "axios";
 
-//Fix URL , instead of loaded context , use API to grab ID of movies
 function MovieTemplate() {
-  //currently only searching through limit 50 movies
-  const latestMovies = useContext(MovieContext);
-  const upcomingMovies = useContext(UpcomingContext);
-  // console.log(latestMovies);
-
   let { id } = useParams();
-  const [movie, setMovie] = useState([]);
+  const [movie, setMovie] = useState({});
 
   useEffect(() => {
-    // console.log(latestMovies);
-    let filterL = latestMovies.filter((obj) => obj.id === id);
-    let filterU;
-    if (upcomingMovies.state.payload.length > 0) {
-      filterU = upcomingMovies.state.payload.filter((obj) => obj.id === id);
-    }
+    //API call id search, set obj to movie
+    // setMovie(getMovieById(id));
+    // console.log(id);
+    const options = {
+      method: "GET",
+      url: `https://moviesdatabase.p.rapidapi.com/titles/${id}`,
+      params: { info: "base_info" },
+      headers: {
+        "X-RapidAPI-Key": process.env.REACT_APP_KEY,
+        "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
+      },
+    };
 
-    filterL.length > 0
-      ? setMovie(filterL)
-      : filterU.length > 0
-      ? setMovie(filterU)
-      : console.log("No Match");
+    axios
+      .request(options)
+      .then(function (response) {
+        setMovie(response.data.results);
+        // return response.data;
+      })
+      .catch(function (error) {
+        // console.error(error);
+        // return false;
+      });
     // eslint-disable-next-line
   }, [id]);
 
+  console.log(movie, id);
   return (
     <section className="movie-page">
-      {movie.length > 0 ? (
+      {Object.keys(movie)?.length > 0 ? (
         <>
           <div className="wrapper">
             <img
-              src={movie[0].primaryImage ? movie[0].primaryImage.url : ""}
-              alt={movie[0].titleText ? movie[0].titleText.text : ""}
+              src={movie.primaryImage ? movie.primaryImage.url : ""}
+              alt={movie.titleText ? movie.titleText.text : ""}
               className="image"></img>
 
             <div className="info-container">
               <div>
-                <h1>{movie[0].titleText.text}</h1>
+                <h1>{movie.titleText.text}</h1>
               </div>
               <div className="info">
                 <div>
-                  <div>Type: {movie[0].titleType.text}</div>
+                  <div>Type: {movie.titleType.text}</div>
 
                   <div>
-                    Released: {movie[0].releaseDate.year}-
-                    {movie[0].releaseDate.day}-{movie[0].releaseDate.month}
+                    Released: {movie.releaseDate.year}-{movie.releaseDate.day}-
+                    {movie.releaseDate.month}
                   </div>
                   <div>
                     Votes:{" "}
-                    {movie[0].ratingsSummary
-                      ? movie[0].ratingsSummary.voteCount
+                    {movie.ratingsSummary
+                      ? movie.ratingsSummary.voteCount
                       : "N/A"}
                   </div>
                   <div>
                     Duration:{" "}
-                    {movie[0].runtime ? movie[0].runtime.seconds / 60 : "N/A"}{" "}
-                    mins
+                    {movie.runtime ? movie.runtime.seconds / 60 : "N/A"} mins
                   </div>
                   <div>
                     Rate:{" "}
-                    {movie[0].ratingsSummary
-                      ? movie[0].ratingsSummary.aggregateRating
+                    {movie.ratingsSummary
+                      ? movie.ratingsSummary.aggregateRating
                       : "N/A"}
                   </div>
                   <div>
                     Genre:
-                    {movie[0].genres
-                      ? movie[0].genres.genres.map((ele) => {
+                    {movie.genres
+                      ? movie.genres.genres.map((ele) => {
                           return <Fragment key={ele.id}> {ele.text}</Fragment>;
                         })
                       : "N/A"}
@@ -84,7 +89,7 @@ function MovieTemplate() {
           <div>
             <h3> Description </h3>
             <br />
-            {movie[0].plot ? movie[0].plot.plotText["plainText"] : "N/A"}
+            {movie.plot ? movie.plot.plotText["plainText"] : "N/A"}
           </div>
         </>
       ) : null}
@@ -93,3 +98,5 @@ function MovieTemplate() {
 }
 
 export default MovieTemplate;
+
+const getMovieById = (id) => {};
