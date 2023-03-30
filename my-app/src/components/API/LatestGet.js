@@ -40,7 +40,7 @@ const LatestGet = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [page, setPage] = useState(0);
 
-  console.log("render latest");
+  // console.log("render latest");
 
   //Get new Page Method , Cancel if loading or same page
   const getData = (newPage) => {

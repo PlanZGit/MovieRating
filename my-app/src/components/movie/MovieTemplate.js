@@ -1,78 +1,59 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import "./MovieTemplate.css";
 import axios from "axios";
+import { SearchContext } from "../API/MovieById";
 
 function MovieTemplate() {
   let { id } = useParams();
-  const [movie, setMovie] = useState({});
+  const { getMovieById, data } = useContext(SearchContext);
 
   useEffect(() => {
-    //API call id search, set obj to movie
-    const options = {
-      method: "GET",
-      url: `https://moviesdatabase.p.rapidapi.com/titles/${id}`,
-      params: { info: "base_info" },
-      headers: {
-        "X-RapidAPI-Key": process.env.REACT_APP_KEY,
-        "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        setMovie(response.data.results);
-        // return response.data;
-      })
-      .catch(function (error) {
-        // console.error(error);
-      });
-    // eslint-disable-next-line
+    getMovieById(id);
   }, [id]);
 
   return (
     <section className="movie-page">
-      {Object.keys(movie)?.length > 0 ? (
+      {data.id === id ? (
         <>
           <div className="wrapper">
             <img
-              src={movie.primaryImage ? movie.primaryImage.url : ""}
-              alt={movie.titleText ? movie.titleText.text : ""}
+              src={data.primaryImage ? data.primaryImage.url : ""}
+              alt={data.titleText ? data.titleText.text : ""}
               className="image"></img>
 
             <div className="info-container">
               <div>
-                <h1>{movie.titleText.text}</h1>
+                <h1>{data.titleText.text}</h1>
               </div>
               <div className="info">
                 <div>
-                  <div>Type: {movie.titleType.text}</div>
+                  <div>Type: {data.titleType.text}</div>
 
                   <div>
-                    Released: {movie.releaseDate.year}-{movie.releaseDate.day}-
-                    {movie.releaseDate.month}
+                    Released: {data.releaseDate.year}-{data.releaseDate.day}-
+                    {data.releaseDate.month}
                   </div>
                   <div>
                     Votes:{" "}
-                    {movie.ratingsSummary
-                      ? movie.ratingsSummary.voteCount
+                    {data.ratingsSummary
+                      ? data.ratingsSummary.voteCount
                       : "N/A"}
                   </div>
                   <div>
-                    Duration:{" "}
-                    {movie.runtime ? movie.runtime.seconds / 60 : "N/A"} mins
+                    Duration: {data.runtime ? data.runtime.seconds / 60 : "N/A"}{" "}
+                    mins
                   </div>
                   <div>
                     Rate:{" "}
-                    {movie.ratingsSummary
-                      ? movie.ratingsSummary.aggregateRating
+                    {data.ratingsSummary
+                      ? data.ratingsSummary.aggregateRating
                       : "N/A"}
                   </div>
                   <div>
                     Genre:
-                    {movie.genres
-                      ? movie.genres.genres.map((ele) => {
+                    {data.genres
+                      ? data.genres.genres.map((ele) => {
                           return <Fragment key={ele.id}> {ele.text}</Fragment>;
                         })
                       : "N/A"}
@@ -84,7 +65,7 @@ function MovieTemplate() {
           <div>
             <h3> Description </h3>
             <br />
-            {movie.plot ? movie.plot.plotText["plainText"] : "N/A"}
+            {data.plot ? data.plot.plotText["plainText"] : "N/A"}
           </div>
         </>
       ) : null}

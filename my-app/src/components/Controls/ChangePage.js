@@ -6,6 +6,8 @@ import { NavLink } from "react-router-dom";
 import "./ChangePage.css";
 
 export const ChangePage = ({ getData, state, page }) => {
+  // console.log("render changePage");
+
   return (
     <div className="control">
       <NavLink
@@ -31,3 +33,5 @@ export const ChangePage = ({ getData, state, page }) => {
     </div>
   );
 };
+
+export default ChangePage;

@@ -17,16 +17,17 @@ function Navbar() {
   const UpcomingText = useContext(UpcomingContext);
   const LatestText = useContext(LatestContext);
 
+  // console.log("render Navbar");
+
   const handleDisplayToggle = () => {
     setDisplayMenu(!displayMenu);
   };
 
-  useEffect(() => {
-    navigate("MovieRating/latest");
-    // eslint-disable-next-line
-  }, []);
+  // useEffect(() => {
+  //   navigate("MovieRating/latest");
+  //   // eslint-disable-next-line
+  // }, []);
 
-  console.log("runing");
   return (
     <nav className="primary-nav">
       <div id="wrapper">
@@ -50,7 +51,13 @@ function Navbar() {
         <div
           id="menu-list"
           className={displayMenu ? "menu-list-active" : "menu-list"}>
-          <Link id="home" to={`/MovieRating/latest/${LatestText.page}`}>
+          <Link
+            id="home"
+            to={
+              LatestText.page === 0
+                ? `/MovieRating/latest/1`
+                : `/MovieRating/latest/${LatestText.page}`
+            }>
             Home
           </Link>
 
@@ -72,4 +79,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default React.memo(Navbar);

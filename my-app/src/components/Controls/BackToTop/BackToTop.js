@@ -2,6 +2,8 @@ import React from "react";
 import { BsArrowUpCircleFill } from "react-icons/bs";
 import "./BackToTop.css";
 function BackToTop() {
+  // console.log("render BackToTop");
+
   const BackTop = () => {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;

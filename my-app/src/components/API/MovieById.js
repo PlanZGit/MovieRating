@@ -6,7 +6,7 @@ export const SearchContext = React.createContext();
 export const MovieByIdAPI = ({ children }) => {
   const [data, setData] = useState({});
 
-  console.log("render movieById");
+  // console.log("render movieById");
 
   const getMovieById = (id) => {
     const options = {
