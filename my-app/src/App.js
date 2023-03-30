@@ -13,6 +13,7 @@ import SearchResults from "./components/Search/SearchResults";
 import Upcoming from "./components/movie/Upcoming";
 import Latest from "./components/movie/Latest";
 import LatestGet from "./components/API/LatestGet";
+import { MovieByIdAPI } from "./components/API/MovieById";
 
 export const SettingContext = React.createContext();
 
@@ -25,32 +26,34 @@ function App() {
     <div>
       <LatestGet>
         <UpcomingGet>
-          <SettingContext.Provider value={setting}>
-            <Navbar />
-            <BackToTop />
+          <MovieByIdAPI>
+            <SettingContext.Provider value={setting}>
+              <Navbar />
+              <BackToTop />
 
-            <Routes>
-              <Route path="/MovieRating" element={<Home />}>
-                <Route path="latest" element={<Latest />}>
-                  <Route path=":id" element={<></>}></Route>
+              <Routes>
+                <Route path="/MovieRating" element={<Home />}>
+                  <Route path="latest" element={<Latest />}>
+                    <Route path=":id" element={<></>}></Route>
+                  </Route>
+                  <Route path="upcoming" element={<Upcoming />}>
+                    <Route path=":id" element={<></>}></Route>
+                  </Route>
                 </Route>
-                <Route path="upcoming" element={<Upcoming />}>
-                  <Route path=":id" element={<></>}></Route>
-                </Route>
-              </Route>
 
-              <Route path="/MovieRating/about" element={<About />}></Route>
-              <Route
-                path="/MovieRating/search/:string"
-                element={<SearchResults />}></Route>
-              <Route
-                path="MovieRating/MovieTemplate/:id"
-                element={<MovieTemplate />}
-              />
+                <Route path="/MovieRating/about" element={<About />}></Route>
+                <Route
+                  path="/MovieRating/search/:string"
+                  element={<SearchResults />}></Route>
+                <Route
+                  path="MovieRating/MovieTemplate/:id"
+                  element={<MovieTemplate />}
+                />
 
-              <Route path="*" element={<NoMatch />}></Route>
-            </Routes>
-          </SettingContext.Provider>
+                <Route path="*" element={<NoMatch />}></Route>
+              </Routes>
+            </SettingContext.Provider>
+          </MovieByIdAPI>
         </UpcomingGet>
       </LatestGet>
     </div>

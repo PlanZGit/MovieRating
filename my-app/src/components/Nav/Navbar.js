@@ -4,7 +4,8 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { MdLocalMovies } from "react-icons/md";
 import "./Navbar.css";
 import DarkMode from "../Controls/dark-mode/DarkMode.js";
-import Search from "../Search/Search";
+// import Search from "../Search/Search";
+import Searchtest from "../Search/Searchtest";
 
 import { UpcomingContext } from "../API/UpcomingGet";
 import { LatestContext } from "../API/LatestGet";
@@ -25,6 +26,7 @@ function Navbar() {
     // eslint-disable-next-line
   }, []);
 
+  console.log("runing");
   return (
     <nav className="primary-nav">
       <div id="wrapper">
@@ -63,7 +65,8 @@ function Navbar() {
           <Link to="/MovieRating/about">About</Link>
         </div>
 
-        <Search />
+        {/* <Search /> */}
+        <Searchtest />
       </div>
     </nav>
   );

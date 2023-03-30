@@ -69,8 +69,7 @@ function Search() {
           id="search-dropdown-movie"
           style={{
             backgroundColor: setting.color ? "rgb(37, 37, 37)" : "white",
-          }}
-        >
+          }}>
           <div className="search-parent-container">
             {filterMovies.map((obj) => {
               return (
@@ -79,20 +78,17 @@ function Search() {
                   to={`/MovieReview/MovieDetail/${obj.id}`}
                   className="child-container"
                   key={obj.id}
-                  onClick={() => reset()}
-                >
+                  onClick={() => reset()}>
                   <img
                     src={obj.primaryImage["url"]}
                     alt="img"
-                    className="search-dropdown-movie-img"
-                  ></img>
+                    className="search-dropdown-movie-img"></img>
 
                   <div
                     className="search-dropdown-movie-details"
                     style={{
                       color: setting.color ? "white" : "",
-                    }}
-                  >
+                    }}>
                     <p style={{ fontWeight: "bold" }}>
                       {obj.titleText["text"]}
                     </p>
@@ -109,8 +105,7 @@ function Search() {
             {filterMovies.length > 4 ? (
               <Link
                 to={`/MovieReview/search/${inputRef.current.value}`}
-                className="view-all"
-              >
+                className="view-all">
                 View all Results
               </Link>
             ) : null}

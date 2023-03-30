@@ -40,6 +40,7 @@ const UpcomingGet = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [page, setPage] = useState(0);
 
+  console.log("render upcoming");
   //Get new Page Method , Cancel if loading or same page
   const getData = (newPage) => {
     if (state.loading) {
