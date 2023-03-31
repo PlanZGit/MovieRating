@@ -32,14 +32,14 @@ function Search() {
   //   // setFilterMovies(filterArray);
   // };
 
-  const closeModal = () => {
-    let dropDown = document.getElementById("search-dropdown-movie");
-    //clear input value, clear filterMovies, display none
-    if (dropDown.style.display === "block") {
-      // setFilterMovies([]);
-      dropDown.style.display = "none";
-    }
-  };
+  // const closeModal = () => {
+  //   let dropDown = document.getElementById("search-dropdown-movie");
+  //   //clear input value, clear filterMovies, display none
+  //   if (dropDown.style.display === "block") {
+  //     // setFilterMovies([]);
+  //     dropDown.style.display = "none";
+  //   }
+  // };
 
   const clearInput = () => {
     inputRef.current.value = "";
