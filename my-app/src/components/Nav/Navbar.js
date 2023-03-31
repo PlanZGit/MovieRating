@@ -60,7 +60,7 @@ function Navbar() {
           </div>
 
           <div id="logo">
-            <h1 className="logo-name">Movie Reviews</h1>
+            <h1 className="logo-name">Movie Rating</h1>
             <MdLocalMovies />
           </div>
 
