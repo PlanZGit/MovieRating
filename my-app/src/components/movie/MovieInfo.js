@@ -1,16 +1,18 @@
 import React, { Fragment, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import "./MovieTemplate.css";
-import axios from "axios";
-import { SearchContext } from "../API/MovieById";
+import { SearchContext } from "../API/SearchAPI";
+import "./MovieInfo.css";
 
-function MovieTemplate() {
+function MovieInfo() {
   let { id } = useParams();
-  const { getMovieById, data } = useContext(SearchContext);
+  const { searchMovie, data } = useContext(SearchContext);
 
   useEffect(() => {
-    getMovieById(id);
-  }, [id]);
+    if (id !== data.id) {
+      searchMovie("searchMovieById", id);
+    }
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <section className="movie-page">
@@ -62,7 +64,7 @@ function MovieTemplate() {
               </div>
             </div>
           </div>
-          <div>
+          <div className="description">
             <h3> Description </h3>
             <br />
             {data.plot ? data.plot.plotText["plainText"] : "N/A"}
@@ -73,4 +75,4 @@ function MovieTemplate() {
   );
 }
 
-export default MovieTemplate;
+export default MovieInfo;
