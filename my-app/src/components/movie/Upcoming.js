@@ -10,6 +10,7 @@ export const Upcoming = () => {
   //use the Params for user url page num search
   useEffect(() => {
     getData("upcoming", id ? id * 1 : 1);
+    // eslint-disable-next-line
   }, [id]);
 
   //Create navigation, using NavLink for relative link, Outlet the data to page

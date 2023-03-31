@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Loading } from "../API/Loading";
 import Grid from "./grid/Grid";
 import { MovieContext } from "../API/CustomAPI";

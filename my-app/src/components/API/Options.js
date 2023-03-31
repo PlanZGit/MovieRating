@@ -59,5 +59,7 @@ export const getOption = (caseOption, newPage, TitleOrIdValue) => {
           "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
         },
       };
+    default:
+      return;
   }
 };

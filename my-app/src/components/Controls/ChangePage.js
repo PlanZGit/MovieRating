@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import { GrCaretNext, GrCaretPrevious } from "react-icons/gr";
-import { FaPagelines } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 import "./ChangePage.css";

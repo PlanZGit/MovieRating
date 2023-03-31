@@ -11,6 +11,7 @@ export const SearchResults = () => {
   //use the Params for user url page num search
   useEffect(() => {
     getData("searchResults", id, title);
+    // eslint-disable-next-line
   }, [title, id]);
 
   //Create navigation, using NavLink for relative link, Outlet the data to page

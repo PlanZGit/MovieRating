@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import React, { useState, useReducer, useCallback, useMemo } from "react";
+import React, { useState, useReducer } from "react";
 import { getOption } from "./Options";
 
 export const MovieContext = React.createContext();
@@ -58,7 +58,6 @@ const reducer = (state, action) => {
 const CustomAPI = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [error, setError] = useState([]);
-  const [title, setTitle] = useState("");
 
   //Get new Page Method , Cancel if loading or same page
   const getData = (caseOption, newPage, newTitle) => {
@@ -90,12 +89,14 @@ const CustomAPI = ({ children }) => {
               type: "UPDATE_UPCOMING_LIST",
               payload: response.data,
             });
+            break;
           case "searchResults":
-            setTitle(newTitle);
             dispatch({
               type: "UPDATE_SEARCH_RESULTS",
               payload: response.data,
             });
+            break;
+          default:
             break;
         }
       })
