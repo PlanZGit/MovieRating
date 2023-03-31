@@ -13,6 +13,7 @@ import Upcoming from "./components/movie/Upcoming";
 import Latest from "./components/movie/Latest";
 import CustomAPI from "./components/API/CustomAPI";
 import SearchAPI from "./components/API/SearchAPI";
+import { Footer } from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -51,6 +52,8 @@ function App() {
 
             <Route path="*" element={<NoMatch />}></Route>
           </Routes>
+
+          <Footer />
         </SearchAPI>
       </CustomAPI>
     </div>
