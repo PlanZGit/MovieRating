@@ -16,7 +16,7 @@ import CustomAPI from "./components/API/CustomAPI";
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <CustomAPI>
         <MovieByIdAPI>
           <Navbar />

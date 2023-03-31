@@ -6,11 +6,9 @@
 .about h2,
 .about h3 {
   user-select: none;
-  margin: 32px;
-}
-
-.about-webpage {
-  margin: 64px;
+  margin: 0px;
+  margin-top: 32px;
+  margin-bottom: 32px;
 }
 
 .tools {

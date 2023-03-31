@@ -28,6 +28,13 @@ export const Upcoming = () => {
 
       {/* <Page state={movieContext.state} /> */}
       <Outlet />
+
+      <ChangePage
+        getData={getData}
+        currentPage={state.upcomingPage}
+        next={state.upcomingNext}
+        pageType="upcoming"
+      />
     </div>
   );
 };

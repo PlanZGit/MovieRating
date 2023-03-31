@@ -1,5 +1,4 @@
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -11,8 +10,17 @@ body {
   text-align: center;
   transition: 0.4s;
   /* scroll-behavior: smooth; */
-}
 
+  /* margin: 32px; */
+  margin: auto;
+  /* margin-top: 32px; */
+  /* margin-bottom: 32px; */
+
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  max-width: calc(232px * 6);
+}
 .dark-mode {
   background-color: white;
   color: black;
@@ -21,6 +29,10 @@ body {
 .dark-mode a {
   color: black;
   background-color: white;
+}
+
+.App {
+  margin: 32px;
 }
 
 h1,

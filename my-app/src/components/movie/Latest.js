@@ -28,6 +28,13 @@ export const Latest = () => {
 
       {/* <Page state={movieContext.state} /> */}
       <Outlet />
+
+      <ChangePage
+        getData={getData}
+        currentPage={state.latestPage}
+        next={state.latestNext}
+        pageType="latest"
+      />
     </div>
   );
 };

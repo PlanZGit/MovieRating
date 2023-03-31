@@ -1,9 +1,7 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdLocalMovies } from "react-icons/md";
-
-import { MovieContext } from "../API/CustomAPI";
 
 // import Search from "../Search/Search";
 import DarkMode from "../Controls/dark-mode/DarkMode.js";
@@ -12,7 +10,6 @@ import "./Navbar.css";
 
 function Navbar() {
   const [displayMenu, setDisplayMenu] = useState(false);
-  const movieContext = useContext(MovieContext);
 
   //Close and Open Modal
   const handleDisplayToggle = () => {
@@ -45,24 +42,11 @@ function Navbar() {
             <div
               id="menu-list"
               className={displayMenu ? "menu-list-active" : "menu-list"}>
-              <Link
-                id="home"
-                to={
-                  movieContext.state.latestPage === 0
-                    ? `/MovieRating/latest/1`
-                    : `/MovieRating/latest/${movieContext.state.latestPage}`
-                }>
+              <Link id="home" to={`/MovieRating/latest/1`}>
                 Home
               </Link>
               <hr />
-              <Link
-                to={
-                  movieContext.state.upcomingPage === 0
-                    ? `/MovieRating/upcoming/1`
-                    : `/MovieRating/upcoming/${movieContext.state.upcomingPage}`
-                }>
-                Upcoming
-              </Link>
+              <Link to={`/MovieRating/upcoming/1`}>Upcoming</Link>
               <hr />
 
               <Link to="/MovieRating/about">About</Link>

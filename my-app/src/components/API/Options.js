@@ -7,7 +7,7 @@ export const getOption = (newPage, caseOption) => {
         params: {
           titleType: "movie",
           sort: "year.incr",
-          limit: "25",
+          limit: "24",
           page: `${newPage}`,
         },
         headers: {
@@ -23,7 +23,7 @@ export const getOption = (newPage, caseOption) => {
         params: {
           list: "most_pop_movies",
           sort: "year.decr",
-          limit: "25",
+          limit: "24",
           info: "base_info",
           page: `${newPage}`,
           startYear: "2000",

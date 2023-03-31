@@ -9,11 +9,11 @@ function About() {
 
         <div className="tool">
           <p>
-            The webpage was made for Movie reviews. Check out ratings for your
-            favorite movies. Webpage was made using Rapid API which host
-            MoviesDatabase API. The frontend was made by Vang Xiong, using the
-            tools below like React, React Router, CSS, react-icons library and
-            lasty axios to http request the data.
+            Check out all the information about your favorite movies including
+            ratings, genra, director, actors, votes and more. This webpage was
+            made using Rapid API which host MoviesDatabase API. The frontend was
+            made by Vang Xiong, using the tools below like React, React Router,
+            CSS, react-icons library and https request axios.
           </p>
         </div>
       </div>
