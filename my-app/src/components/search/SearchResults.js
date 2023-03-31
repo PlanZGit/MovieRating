@@ -17,6 +17,7 @@ export const SearchResults = () => {
   //Create navigation, using NavLink for relative link, Outlet the data to page
   return (
     <div>
+      <h1>{title}</h1>
       <h2 style={{ marginTop: "32px" }}>
         {state.searchResultsList.length} Search Results
       </h2>

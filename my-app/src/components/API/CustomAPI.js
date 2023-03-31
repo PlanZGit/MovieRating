@@ -60,7 +60,7 @@ const CustomAPI = ({ children }) => {
   const [error, setError] = useState([]);
 
   //Get new Page Method , Cancel if loading or same page
-  const getData = (caseOption, newPage, newTitle) => {
+  const getData = async (caseOption, newPage, newTitle) => {
     if (state.loading) {
       console.log("DEBUG: still loading");
       return;
@@ -73,40 +73,38 @@ const CustomAPI = ({ children }) => {
     });
     //Get Data Request Option
     const options = getOption(caseOption, newPage, newTitle);
-    axios
-      .request(options)
-      .then(function (response) {
-        // console.log(response.data);
-        switch (caseOption) {
-          case "latest":
-            dispatch({
-              type: "UPDATE_LATEST_LIST",
-              payload: response.data,
-            });
-            break;
-          case "upcoming":
-            dispatch({
-              type: "UPDATE_UPCOMING_LIST",
-              payload: response.data,
-            });
-            break;
-          case "searchResults":
-            dispatch({
-              type: "UPDATE_SEARCH_RESULTS",
-              payload: response.data,
-            });
-            break;
-          default:
-            break;
-        }
-      })
-      .catch(function (err) {
-        setError([...error, err]);
-        dispatch({
-          type: "SET_LOADING",
-          loading: false,
-        });
+
+    try {
+      const response = await axios.request(options);
+      switch (caseOption) {
+        case "latest":
+          dispatch({
+            type: "UPDATE_LATEST_LIST",
+            payload: response.data,
+          });
+          break;
+        case "upcoming":
+          dispatch({
+            type: "UPDATE_UPCOMING_LIST",
+            payload: response.data,
+          });
+          break;
+        case "searchResults":
+          dispatch({
+            type: "UPDATE_SEARCH_RESULTS",
+            payload: response.data,
+          });
+          break;
+        default:
+          break;
+      }
+    } catch (err) {
+      setError([...error, err]);
+      dispatch({
+        type: "SET_LOADING",
+        loading: false,
       });
+    }
   };
 
   return (

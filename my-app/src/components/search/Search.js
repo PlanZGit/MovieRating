@@ -3,34 +3,34 @@ import { useNavigate } from "react-router-dom";
 import { GoSearch } from "react-icons/go";
 
 import "./Search.css";
-import SearchModal from "./SearchModal";
+// import SearchModal from "./SearchModal";
 
 function Search() {
   const navigate = useNavigate();
   const inputRef = useRef(null);
 
-  const handleChange = (e) => {
-    // //diplay block if input length > 0, else call handleBlur
+  // const handleChange = (e) => {
+  //   // //diplay block if input length > 0, else call handleBlur
 
-    if (e.target.value.length === 0) {
-      closeModal();
-      clearInput();
-    }
-    if (e.target.value.length > 1) {
-      let dropDown = document.getElementById("search-dropdown-movie");
-      dropDown.style.display = "block";
-    }
+  //   if (e.target.value.length === 0) {
+  //     closeModal();
+  //     clearInput();
+  //   }
+  //   if (e.target.value.length > 1) {
+  //     let dropDown = document.getElementById("search-dropdown-movie");
+  //     dropDown.style.display = "block";
+  //   }
 
-    // //filter search , grab only top 5
-    // let filterArray = movies.filter((obj) =>
-    //   obj.titleText["text"].toLowerCase().includes(e.target.value.toLowerCase())
-    // );
-    // if (filterArray.length > 5) {
-    //   filterArray.length = 5;
-    // }
-    // //set results
-    // setFilterMovies(filterArray);
-  };
+  //   // //filter search , grab only top 5
+  //   // let filterArray = movies.filter((obj) =>
+  //   //   obj.titleText["text"].toLowerCase().includes(e.target.value.toLowerCase())
+  //   // );
+  //   // if (filterArray.length > 5) {
+  //   //   filterArray.length = 5;
+  //   // }
+  //   // //set results
+  //   // setFilterMovies(filterArray);
+  // };
 
   const closeModal = () => {
     let dropDown = document.getElementById("search-dropdown-movie");
@@ -49,10 +49,11 @@ function Search() {
   const handleSubmit = (event) => {
     // searchMovie("movieByTitle", inputRef.current.value);
     event.preventDefault();
-    console.log("Submiting.....");
-
-    navigate("/MovieRating/search/" + inputRef.current.value + "/1");
-    closeModal();
+    // console.log("Submiting.....");
+    if (inputRef.current.value) {
+      navigate("/MovieRating/search/" + inputRef.current.value + "/1");
+    }
+    // closeModal();
     clearInput();
   };
 
@@ -67,8 +68,8 @@ function Search() {
     <div>
       <form className="search-container">
         <input
-          placeholder="Search movie title"
-          onChange={(e) => handleChange(e)}
+          placeholder="Search movie"
+          // onChange={(e) => handleChange(e)}
           ref={inputRef}
         />
 
@@ -76,7 +77,7 @@ function Search() {
           <GoSearch />
         </button>
 
-        <SearchModal />
+        {/* <SearchModal /> */}
       </form>
     </div>
   );
