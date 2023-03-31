@@ -1,21 +1,12 @@
 import React, { useContext } from "react";
 import "./DarkMode.css";
 import { AiFillSetting } from "react-icons/ai";
-import { SettingContext } from "../../../App.js";
 
 function DarkMode() {
-  const setting = useContext(SettingContext);
-
-  console.log("render DarkMode");
+  // console.log("render DarkMode");
 
   const handleBackGroundColor = (e) => {
     document.body.classList.toggle("dark-mode");
-
-    if (!e.target.checked) {
-      setting.color = false;
-    } else {
-      setting.color = true;
-    }
     // console.log(setting.color);
   };
 

@@ -1,12 +1,19 @@
 .control {
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
+  justify-content: flex-end;
   align-items: center;
   text-align: center;
   gap: 5px;
 }
 .control a {
   gap: 5px;
+}
+
+.control a span.white {
+  color: rgb(255, 255, 255);
+}
+.control a span.black {
+  color: rgb(0, 0, 0);
 }
 
 .pageNum {

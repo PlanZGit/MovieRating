@@ -14,9 +14,13 @@ body {
 }
 
 .dark-mode {
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
+  background-color: white;
+  color: black;
   transition: 1s;
+}
+.dark-mode a {
+  color: black;
+  background-color: white;
 }
 
 h1,
@@ -41,4 +45,9 @@ svg {
   width: 30px;
   height: 30px;
   user-select: none;
+}
+
+hr {
+  opacity: 0.1;
+  margin: 0;
 }
