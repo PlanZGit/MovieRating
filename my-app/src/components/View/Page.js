@@ -5,21 +5,6 @@ import { MovieContext } from "../API/CustomAPI";
 
 const Page = ({ pageType }) => {
   const { state } = useContext(MovieContext);
-  // const [movie, setMovie] = useState({});
-
-  // useEffect(() => {
-  //   switch (pageType) {
-  //     case "latest":
-  //       setMovie(state);
-  //       break;
-  //     case "upcoming":
-  //       setMovie(state);
-  //       break;
-  //   }
-  // }, []);
-
-  // console.log(pageType);
-  // console.log(state[pageType + "List"]);
 
   return (
     <div>

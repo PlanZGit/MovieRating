@@ -1,4 +1,4 @@
-export const getOption = (caseOption, newPage, id) => {
+export const getOption = (caseOption, newPage, TitleOrIdValue) => {
   switch (caseOption) {
     case "upcoming":
       return {
@@ -15,7 +15,6 @@ export const getOption = (caseOption, newPage, id) => {
           "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
         },
       };
-      break;
     case "latest":
       return {
         method: "GET",
@@ -33,17 +32,32 @@ export const getOption = (caseOption, newPage, id) => {
           "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
         },
       };
-      break;
-    case "movieById":
+    case "searchMovieById":
       return {
         method: "GET",
-        url: `https://moviesdatabase.p.rapidapi.com/titles/${id}`,
+        url: `https://moviesdatabase.p.rapidapi.com/titles/${TitleOrIdValue}`,
         params: { info: "base_info" },
         headers: {
           "X-RapidAPI-Key": process.env.REACT_APP_KEY,
           "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
         },
       };
-      break;
+    case "searchResults":
+      return {
+        method: "GET",
+        url: `https://moviesdatabase.p.rapidapi.com/titles/search/title/${TitleOrIdValue}`,
+        params: {
+          exact: "false",
+          startYear: "2000",
+          titleType: "movie",
+          info: "base_info",
+          page: `${newPage}`,
+          limit: "50",
+        },
+        headers: {
+          "X-RapidAPI-Key": process.env.REACT_APP_KEY,
+          "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
+        },
+      };
   }
 };

@@ -4,13 +4,13 @@ import { getOption } from "./Options";
 
 export const SearchContext = React.createContext();
 
-export const MovieByIdAPI = ({ children }) => {
+export const SearchAPI = ({ children }) => {
   const [data, setData] = useState({});
 
   // console.log("render movieById");
 
-  const getMovieById = (id) => {
-    const options = getOption("movieById", null, id);
+  const searchMovie = (type, value) => {
+    const options = getOption(type, null, value);
 
     axios
       .request(options)
@@ -26,8 +26,10 @@ export const MovieByIdAPI = ({ children }) => {
   };
 
   return (
-    <SearchContext.Provider value={{ getMovieById, data }}>
+    <SearchContext.Provider value={{ searchMovie, data }}>
       {children}
     </SearchContext.Provider>
   );
 };
+
+export default SearchAPI;

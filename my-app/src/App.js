@@ -7,18 +7,18 @@ import NoMatch from "./components/NoMatch";
 import Page from "./components/View/Page";
 import About from "./components/About/About";
 import BackToTop from "./components/Controls/BackToTop/BackToTop";
-import MovieTemplate from "./components/movie/MovieTemplate";
+import MovieInfo from "./components/movie/MovieInfo";
 import SearchResults from "./components/Search/SearchResults";
 import Upcoming from "./components/movie/Upcoming";
 import Latest from "./components/movie/Latest";
-import { MovieByIdAPI } from "./components/API/MovieById";
 import CustomAPI from "./components/API/CustomAPI";
+import SearchAPI from "./components/API/SearchAPI";
 
 function App() {
   return (
     <div className="App">
       <CustomAPI>
-        <MovieByIdAPI>
+        <SearchAPI>
           <Navbar />
           <BackToTop />
 
@@ -35,17 +35,23 @@ function App() {
             </Route>
 
             <Route path="/MovieRating/about" element={<About />}></Route>
+
             <Route
-              path="/MovieRating/search/:string"
-              element={<SearchResults />}></Route>
+              path="/MovieRating/search/:title"
+              element={<SearchResults />}>
+              <Route
+                path=":id"
+                element={<Page pageType="searchResults" />}></Route>
+            </Route>
+
             <Route
               path="MovieRating/MovieTemplate/:id"
-              element={<MovieTemplate />}
+              element={<MovieInfo />}
             />
 
             <Route path="*" element={<NoMatch />}></Route>
           </Routes>
-        </MovieByIdAPI>
+        </SearchAPI>
       </CustomAPI>
     </div>
   );

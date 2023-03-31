@@ -11,7 +11,7 @@ export const Latest = () => {
 
   //use the Params for user url page num search
   useEffect(() => {
-    getData(id ? id * 1 : 1, "latest");
+    getData("latest", id ? id * 1 : 1);
     // eslint-disable-next-line
   }, []);
 

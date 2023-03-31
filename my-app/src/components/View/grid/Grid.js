@@ -14,14 +14,13 @@ function Grid(props) {
         let rate = "N/A";
         let image = "NA";
 
+        //Check if obj value exist
         if (obj.primaryImage != null) {
           image = obj.primaryImage.url;
         }
-
         if (typeof obj.ratingsSummary !== "undefined") {
           rate = obj.ratingsSummary["aggregateRating"];
         }
-
         if (typeof rate === "number") {
           color =
             rate > 5
@@ -45,7 +44,9 @@ function Grid(props) {
               }}>
               {rate}
             </div>
-            <div className="released">{obj.releaseDate["year"]}</div>
+            <div className="released">
+              {obj.releaseDate === null ? "N/A" : obj.releaseDate.year}
+            </div>
           </div>
         );
       })}

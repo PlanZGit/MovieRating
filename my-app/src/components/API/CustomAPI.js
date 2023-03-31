@@ -14,6 +14,9 @@ const initialState = {
   upcomingList: {},
   upcomingPage: 0,
   upcomingNext: null,
+  searchResultsList: {},
+  searchResultsPage: 0,
+  searchResultsNext: null,
 };
 
 const reducer = (state, action) => {
@@ -34,6 +37,14 @@ const reducer = (state, action) => {
         upcomingPage: action.payload.page,
         upcomingNext: action.payload.next,
       };
+    case "UPDATE_SEARCH_RESULTS":
+      return {
+        ...state,
+        loading: false,
+        searchResultsList: action.payload.results,
+        searchResultsPage: action.payload.page,
+        searchResultsNext: action.payload.next,
+      };
     case "SET_LOADING":
       return {
         ...state,
@@ -47,15 +58,12 @@ const reducer = (state, action) => {
 const CustomAPI = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [error, setError] = useState([]);
+  const [title, setTitle] = useState("");
 
   //Get new Page Method , Cancel if loading or same page
-  const getData = (newPage, caseOption) => {
+  const getData = (caseOption, newPage, newTitle) => {
     if (state.loading) {
       console.log("DEBUG: still loading");
-      return;
-    }
-    if (newPage == state[caseOption + "Page"]) {
-      console.log("DEBUG: same page");
       return;
     }
 
@@ -65,24 +73,27 @@ const CustomAPI = ({ children }) => {
       loading: true,
     });
     //Get Data Request Option
-    const options = getOption(caseOption, newPage);
-
+    const options = getOption(caseOption, newPage, newTitle);
     axios
       .request(options)
       .then(function (response) {
         // console.log(response.data);
         switch (caseOption) {
           case "latest":
-            // setPage(newPage);
             dispatch({
               type: "UPDATE_LATEST_LIST",
               payload: response.data,
             });
             break;
           case "upcoming":
-            // setPage(newPage);
             dispatch({
               type: "UPDATE_UPCOMING_LIST",
+              payload: response.data,
+            });
+          case "searchResults":
+            setTitle(newTitle);
+            dispatch({
+              type: "UPDATE_SEARCH_RESULTS",
               payload: response.data,
             });
             break;
