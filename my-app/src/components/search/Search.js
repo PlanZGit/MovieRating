@@ -1,75 +1,75 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import "./Search.css";
 import { GoSearch } from "react-icons/go";
-import { MovieContext } from "../API/DataAxiosGet";
-import { SettingContext } from "../../App";
+
+import "./Search.css";
+//Fix dark-mode
+// import { SettingContext } from "../../App";
 
 function Search() {
-  const movies = useContext(MovieContext);
-  const setting = useContext(SettingContext);
+  // const setting = useContext(SettingContext);
+
   const inputRef = useRef(null);
   const [filterMovies, setFilterMovies] = useState([]);
 
   const handleChange = (e) => {
     //diplay block if input length > 0, else call handleBlur
-    if (e.target.value.length > 0) {
-      let dropDown = document.getElementById("search-dropdown-movie");
-      dropDown.style.display = "block";
-    } else {
-      reset();
-    }
-
-    //filter search , grab only top 5
-    let filterArray = movies.filter((obj) =>
-      obj.titleText["text"].toLowerCase().includes(e.target.value.toLowerCase())
-    );
-    if (filterArray.length > 5) {
-      filterArray.length = 5;
-    }
-
-    //set results
-    setFilterMovies(filterArray);
+    // if (e.target.value.length > 0) {
+    //   let dropDown = document.getElementById("search-dropdown-movie");
+    //   dropDown.style.display = "block";
+    // } else {
+    //   reset();
+    // }
+    // //filter search , grab only top 5
+    // let filterArray = movies.filter((obj) =>
+    //   obj.titleText["text"].toLowerCase().includes(e.target.value.toLowerCase())
+    // );
+    // if (filterArray.length > 5) {
+    //   filterArray.length = 5;
+    // }
+    // //set results
+    // setFilterMovies(filterArray);
   };
 
-  const reset = () => {
-    //clear input value, clear filterMovies, display none
-    if (
-      document.getElementById("search-dropdown-movie").style.display === "block"
-    ) {
-      inputRef.current.value = "";
-      setFilterMovies([]);
-      let dropDown = document.getElementById("search-dropdown-movie");
-      dropDown.style.display = "none";
-    }
-  };
+  // const reset = () => {
+  //   //clear input value, clear filterMovies, display none
+  //   if (
+  //     document.getElementById("search-dropdown-movie").style.display === "block"
+  //   ) {
+  //     inputRef.current.value = "";
+  //     setFilterMovies([]);
+  //     let dropDown = document.getElementById("search-dropdown-movie");
+  //     dropDown.style.display = "none";
+  //   }
+  // };
 
   useEffect(() => {
-    document.addEventListener("click", reset);
-    return () => {
-      document.removeEventListener("click", reset);
-    };
+    // document.addEventListener("click", reset);
+    // return () => {
+    //   document.removeEventListener("click", reset);
+    // };
   }, []);
 
   return (
-    <section name="form">
+    <div>
       <form className="search-container">
         <input
-          placeholder="Search"
+          placeholder="Search movie title"
           onChange={(e) => handleChange(e)}
           ref={inputRef}
         />
 
-        {/* react icon */}
-        <GoSearch />
-        {/* <Link to="/MovieReview/products">Products</Link> */}
+        <button>
+          <GoSearch />
+        </button>
 
-        <div
+        {/* <div
           className="search-dropdown-movie"
           id="search-dropdown-movie"
-          style={{
-            backgroundColor: setting.color ? "rgb(37, 37, 37)" : "white",
-          }}>
+          // style={{
+          //   backgroundColor: setting.color ? "rgb(37, 37, 37)" : "white",
+          // }}
+        >
           <div className="search-parent-container">
             {filterMovies.map((obj) => {
               return (
@@ -86,9 +86,10 @@ function Search() {
 
                   <div
                     className="search-dropdown-movie-details"
-                    style={{
-                      color: setting.color ? "white" : "",
-                    }}>
+                    // style={{
+                    //   color: setting.color ? "white" : "",
+                    // }}
+                  >
                     <p style={{ fontWeight: "bold" }}>
                       {obj.titleText["text"]}
                     </p>
@@ -110,9 +111,9 @@ function Search() {
               </Link>
             ) : null}
           </div>
-        </div>
+        </div> */}
       </form>
-    </section>
+    </div>
   );
 }
 

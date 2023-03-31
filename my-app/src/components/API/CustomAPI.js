@@ -65,7 +65,7 @@ const CustomAPI = ({ children }) => {
       loading: true,
     });
     //Get Data Request Option
-    const options = getOption(newPage, caseOption);
+    const options = getOption(caseOption, newPage);
 
     axios
       .request(options)

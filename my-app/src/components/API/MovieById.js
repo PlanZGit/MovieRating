@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { getOption } from "./Options";
 
 export const SearchContext = React.createContext();
 
@@ -9,15 +10,7 @@ export const MovieByIdAPI = ({ children }) => {
   // console.log("render movieById");
 
   const getMovieById = (id) => {
-    const options = {
-      method: "GET",
-      url: `https://moviesdatabase.p.rapidapi.com/titles/${id}`,
-      params: { info: "base_info" },
-      headers: {
-        "X-RapidAPI-Key": process.env.REACT_APP_KEY,
-        "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
-      },
-    };
+    const options = getOption("movieById", null, id);
 
     axios
       .request(options)

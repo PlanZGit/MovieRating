@@ -1,4 +1,4 @@
-export const getOption = (newPage, caseOption) => {
+export const getOption = (caseOption, newPage, id) => {
   switch (caseOption) {
     case "upcoming":
       return {
@@ -28,6 +28,17 @@ export const getOption = (newPage, caseOption) => {
           page: `${newPage}`,
           startYear: "2000",
         },
+        headers: {
+          "X-RapidAPI-Key": process.env.REACT_APP_KEY,
+          "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",
+        },
+      };
+      break;
+    case "movieById":
+      return {
+        method: "GET",
+        url: `https://moviesdatabase.p.rapidapi.com/titles/${id}`,
+        params: { info: "base_info" },
         headers: {
           "X-RapidAPI-Key": process.env.REACT_APP_KEY,
           "X-RapidAPI-Host": "moviesdatabase.p.rapidapi.com",

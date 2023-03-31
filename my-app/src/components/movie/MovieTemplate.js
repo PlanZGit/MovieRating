@@ -62,7 +62,7 @@ function MovieTemplate() {
               </div>
             </div>
           </div>
-          <div>
+          <div className="description">
             <h3> Description </h3>
             <br />
             {data.plot ? data.plot.plotText["plainText"] : "N/A"}

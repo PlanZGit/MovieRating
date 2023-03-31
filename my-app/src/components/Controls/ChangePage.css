@@ -35,6 +35,8 @@
 
 .next {
   height: 1rem;
+  padding-top: 1px;
+  padding-bottom: 1px;
   background-color: rgb(189, 215, 60);
   transition: 0.15s;
   z-index: 1;

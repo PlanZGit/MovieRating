@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import { AiOutlineMenu } from "react-icons/ai";
 import { MdLocalMovies } from "react-icons/md";
 
-// import Search from "../Search/Search";
+import Search from "../Search/Search";
 import DarkMode from "../Controls/dark-mode/DarkMode.js";
-import Searchtest from "../Search/Searchtest";
 import "./Navbar.css";
 
 function Navbar() {
@@ -45,9 +44,8 @@ function Navbar() {
               <Link id="home" to={`/MovieRating/latest/1`}>
                 Home
               </Link>
-              <hr />
+
               <Link to={`/MovieRating/upcoming/1`}>Upcoming</Link>
-              <hr />
 
               <Link to="/MovieRating/about">About</Link>
             </div>
@@ -68,9 +66,7 @@ function Navbar() {
 
           <DarkMode />
         </div>
-
-        {/* <Search /> */}
-        <Searchtest />
+        <Search />
       </div>
     </nav>
   );
