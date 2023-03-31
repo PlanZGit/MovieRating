@@ -11,7 +11,7 @@ function Home() {
             <div className="circle-animation">
               <h3>Movie</h3>
               <div className="circle-animation">
-                <h3>Reviews</h3>
+                <h3>Rating</h3>
               </div>
             </div>
           </div>
