@@ -1,15 +1,19 @@
 import React, { useContext } from "react";
+import { useParams } from "react-router-dom";
 import { Loading } from "../API/Loading";
-import Grid from "./grid/Grid";
+import Grid from "../View/grid/Grid";
 import { MovieContext } from "../API/CustomAPI";
 
-const Page = ({ pageType }) => {
+const Page = () => {
+  const params = useParams();
   const { state } = useContext(MovieContext);
+
+  // console.log(params);
 
   return (
     <div>
-      {state[pageType + "List"].length > 0 ? (
-        <Grid movies={state[pageType + "List"]}></Grid>
+      {state[params.option + "List"].length > 0 ? (
+        <Grid movies={state[params.option + "List"]}></Grid>
       ) : (
         <Loading />
       )}

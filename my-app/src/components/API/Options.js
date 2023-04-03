@@ -1,5 +1,6 @@
-export const getOption = (caseOption, newPage, TitleOrIdValue) => {
+export const getOption = (caseOption, newPage, titleType, mostPop) => {
   const date = new Date();
+  const list = mostPop ? "most_pop_series" : "";
 
   switch (caseOption) {
     case "upcoming":
@@ -7,7 +8,7 @@ export const getOption = (caseOption, newPage, TitleOrIdValue) => {
         method: "GET",
         url: "https://moviesdatabase.p.rapidapi.com/titles/x/upcoming",
         params: {
-          titleType: "movie",
+          titleType: titleType,
           sort: "year.incr",
           limit: "24",
           page: `${newPage}`,
@@ -22,8 +23,9 @@ export const getOption = (caseOption, newPage, TitleOrIdValue) => {
         method: "GET",
         url: "https://moviesdatabase.p.rapidapi.com/titles",
         params: {
-          titleType: "movie",
+          titleType: titleType,
           sort: "year.decr",
+          list: list,
           limit: "24",
           endYear: date.getUTCFullYear(),
           info: "base_info",
@@ -38,7 +40,7 @@ export const getOption = (caseOption, newPage, TitleOrIdValue) => {
     case "searchMovieById":
       return {
         method: "GET",
-        url: `https://moviesdatabase.p.rapidapi.com/titles/${TitleOrIdValue}`,
+        url: `https://moviesdatabase.p.rapidapi.com/titles/${titleType}`,
         params: { info: "base_info" },
         headers: {
           "X-RapidAPI-Key": process.env.REACT_APP_KEY,
@@ -48,11 +50,11 @@ export const getOption = (caseOption, newPage, TitleOrIdValue) => {
     case "searchResults":
       return {
         method: "GET",
-        url: `https://moviesdatabase.p.rapidapi.com/titles/search/title/${TitleOrIdValue}`,
+        url: `https://moviesdatabase.p.rapidapi.com/titles/search/title/${titleType}`,
         params: {
           exact: "false",
           startYear: "2000",
-          titleType: "movie",
+          // titleType: "movie",
           info: "base_info",
           page: `${newPage}`,
           limit: "50",

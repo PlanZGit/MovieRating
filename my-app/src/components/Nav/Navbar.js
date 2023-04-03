@@ -41,11 +41,13 @@ function Navbar() {
             <div
               id="menu-list"
               className={displayMenu ? "menu-list-active" : "menu-list"}>
-              <Link id="home" to={`/MovieRating/latest/1`}>
+              <Link id="home" to={`/MovieRating`}>
                 Home
               </Link>
-
-              <Link to={`/MovieRating/upcoming/1`}>Upcoming</Link>
+              <Link id="home" to={`/MovieRating/tvSeries/latest/1`}>
+                TV Series
+              </Link>
+              <Link to={`/MovieRating/movie/latest/1`}>Movies</Link>
 
               <Link to="/MovieRating/about">About</Link>
             </div>

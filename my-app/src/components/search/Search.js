@@ -51,7 +51,7 @@ function Search() {
     event.preventDefault();
     // console.log("Submiting.....");
     if (inputRef.current.value) {
-      navigate("/MovieRating/search/" + inputRef.current.value + "/1");
+      navigate("/MovieRating/" + inputRef.current.value + "/searchResults/1");
     }
     // closeModal();
     clearInput();
