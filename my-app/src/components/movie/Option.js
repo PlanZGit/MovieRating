@@ -3,39 +3,38 @@ import { useParams, Outlet } from "react-router-dom";
 import { ChangePage } from "../Controls/ChangePage";
 import { MovieContext } from "../API/CustomAPI";
 
-export const Upcoming = () => {
+export const Option = () => {
+  const params = useParams();
   const { state, getData } = useContext(MovieContext);
-  const { id } = useParams();
 
-  //use the Params for user url page num search
   useEffect(() => {
-    getData("upcoming", id ? id * 1 : 1);
+    getData(params.option, params.page ? params.page * 1 : 1, params.pageType);
     // eslint-disable-next-line
-  }, []);
+  }, [params]);
 
   //Create navigation, using NavLink for relative link, Outlet the data to page
   return (
     <div>
-      <h2>Upcoming Movie Rating</h2>
+      <h2>
+        {params.option} {params.pageType}
+      </h2>
       <ChangePage
-        state={state}
         getData={getData}
-        currentPage={state.upcomingPage}
-        next={state.upcomingNext}
-        pageType="upcoming"
+        currentPage={state[params.option + "Page"]}
+        next={state[params.option + "Next"]}
+        option={params.option}
       />
 
-      {/* <Page state={movieContext.state} /> */}
       <Outlet />
 
       <ChangePage
         getData={getData}
-        currentPage={state.upcomingPage}
-        next={state.upcomingNext}
-        pageType="upcoming"
+        currentPage={state.latestPage}
+        next={state.latestNext}
+        option={params.option}
       />
     </div>
   );
 };
 
-export default Upcoming;
+export default Option;

@@ -3,16 +3,14 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Navbar from "./components/Nav/Navbar";
 import NoMatch from "./components/NoMatch";
-// eslint-disable-next-line
-import Page from "./components/View/Page";
+import Page from "./components/movie/Page";
 import About from "./components/About/About";
 import BackToTop from "./components/Controls/BackToTop/BackToTop";
 import MovieInfo from "./components/movie/MovieInfo";
-import SearchResults from "./components/Search/SearchResults";
-import Upcoming from "./components/movie/Upcoming";
-import Latest from "./components/movie/Latest";
+import Option from "./components/movie/Option";
 import CustomAPI from "./components/API/CustomAPI";
 import SearchAPI from "./components/API/SearchAPI";
+import { PageType } from "./components/movie/PageType";
 import { Footer } from "./components/Footer/Footer";
 
 function App() {
@@ -23,28 +21,17 @@ function App() {
           <Navbar />
           <BackToTop />
 
+          {/* Using 1 api to get search, movies/series latest/upcoming */}
           <Routes>
             <Route path="/MovieRating" element={<Home />}>
-              <Route path="latest" element={<Latest />}>
-                <Route path=":id" element={<Page pageType="latest" />}></Route>
-              </Route>
-              <Route path="upcoming" element={<Upcoming />}>
-                <Route
-                  path=":id"
-                  element={<Page pageType="upcoming" />}></Route>
+              <Route path=":pageType" element={<PageType />}>
+                <Route path=":option" element={<Option />}>
+                  <Route path=":page" element={<Page />}></Route>
+                </Route>
               </Route>
             </Route>
 
             <Route path="/MovieRating/about" element={<About />}></Route>
-
-            <Route
-              path="/MovieRating/search/:title"
-              element={<SearchResults />}>
-              <Route
-                path=":id"
-                element={<Page pageType="searchResults" />}></Route>
-            </Route>
-
             <Route
               path="MovieRating/MovieTemplate/:id"
               element={<MovieInfo />}

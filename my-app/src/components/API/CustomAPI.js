@@ -60,19 +60,19 @@ const CustomAPI = ({ children }) => {
   const [error, setError] = useState([]);
 
   //Get new Page Method , Cancel if loading or same page
-  const getData = async (caseOption, newPage, newTitle) => {
-    if (state.loading) {
-      console.log("DEBUG: still loading");
-      return;
-    }
+  const getData = async (caseOption, newPage, titleType) => {
+    // if (state.loading) {
+    //   console.log("DEBUG: still loading");
+    //   return;
+    // }
 
     //Set Loading
-    dispatch({
-      type: "SET_LOADING",
-      loading: true,
-    });
+    // dispatch({
+    //   type: "SET_LOADING",
+    //   loading: true,
+    // });
     //Get Data Request Option
-    const options = getOption(caseOption, newPage, newTitle);
+    const options = getOption(caseOption, newPage, titleType);
 
     try {
       const response = await axios.request(options);
@@ -100,6 +100,7 @@ const CustomAPI = ({ children }) => {
       }
     } catch (err) {
       setError([...error, err]);
+      // console.log(error);
       dispatch({
         type: "SET_LOADING",
         loading: false,

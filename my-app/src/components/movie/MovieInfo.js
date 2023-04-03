@@ -33,8 +33,15 @@ function MovieInfo() {
                   <div>Type: {data.titleType.text}</div>
 
                   <div>
-                    Released: {data.releaseDate.year}-{data.releaseDate.day}-
-                    {data.releaseDate.month}
+                    Released:{" "}
+                    {data.releaseDate ? (
+                      <>
+                        {data.releaseDate.year}-{data.releaseDate.day}-
+                        {data.releaseDate.month}
+                      </>
+                    ) : (
+                      "N/A"
+                    )}
                   </div>
                   <div>
                     Votes:{" "}

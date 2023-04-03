@@ -1,41 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { GrCaretNext, GrCaretPrevious } from "react-icons/gr";
 import { NavLink } from "react-router-dom";
 
 import "./ChangePage.css";
 
 //Convert page into Number
-export const ChangePage = ({
-  state,
-  getData,
-  currentPage,
-  next,
-  pageType,
-  title,
-}) => {
-  let page = Number(currentPage);
+export const ChangePage = ({ getData, currentPage, next, option, title }) => {
+  const page = Number(currentPage);
   // console.log(page);
-
-  const handlePage = (action) => {
-    if (state.loading === false) {
-      switch (action) {
-        case "next":
-          getData(pageType, page + 1, title);
-          break;
-        case "back":
-          if (page !== 1) {
-            getData(pageType, page - 1, title);
-          }
-          break;
-      }
-    }
-  };
 
   return (
     <div className="control">
       <NavLink
         to={page !== 1 ? page - 1 + "" : page + ""}
-        onClick={() => handlePage("back")}
         className={page > 1 ? "" : "notVisible"}>
         <GrCaretPrevious className="next" />
         Back
@@ -43,13 +20,9 @@ export const ChangePage = ({
 
       <div className="pageNum">
         <p>Page {page}</p>
-        {/* <FaPagelines className="pageNum-icon" id="pageNum-icon" /> */}
       </div>
 
-      <NavLink
-        to={page + 1 + ""}
-        onClick={() => handlePage("next")}
-        className={next === null ? "notVisible" : ""}>
+      <NavLink to={page + 1 + ""} className={next === null ? "notVisible" : ""}>
         Next
         <GrCaretNext className="next" />
       </NavLink>
