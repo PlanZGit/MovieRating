@@ -11,13 +11,14 @@ export const Upcoming = () => {
   useEffect(() => {
     getData("upcoming", id ? id * 1 : 1);
     // eslint-disable-next-line
-  }, [id]);
+  }, []);
 
   //Create navigation, using NavLink for relative link, Outlet the data to page
   return (
     <div>
       <h2>Upcoming Movie Rating</h2>
       <ChangePage
+        state={state}
         getData={getData}
         currentPage={state.upcomingPage}
         next={state.upcomingNext}

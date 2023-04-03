@@ -1,4 +1,6 @@
 export const getOption = (caseOption, newPage, TitleOrIdValue) => {
+  const date = new Date();
+
   switch (caseOption) {
     case "upcoming":
       return {
@@ -20,9 +22,10 @@ export const getOption = (caseOption, newPage, TitleOrIdValue) => {
         method: "GET",
         url: "https://moviesdatabase.p.rapidapi.com/titles",
         params: {
-          list: "most_pop_movies",
+          titleType: "movie",
           sort: "year.decr",
           limit: "24",
+          endYear: date.getUTCFullYear(),
           info: "base_info",
           page: `${newPage}`,
           startYear: "2000",
