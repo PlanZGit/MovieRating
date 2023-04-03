@@ -16,7 +16,7 @@ export const Option = () => {
   return (
     <div>
       <h2>
-        {params.option} {params.pageType}
+        "{params.pageType}" {params.option}
       </h2>
       <ChangePage
         getData={getData}
@@ -29,8 +29,8 @@ export const Option = () => {
 
       <ChangePage
         getData={getData}
-        currentPage={state.latestPage}
-        next={state.latestNext}
+        currentPage={state[params.option + "Page"]}
+        next={state[params.option + "Next"]}
         option={params.option}
       />
     </div>

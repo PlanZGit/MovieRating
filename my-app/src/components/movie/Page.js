@@ -15,7 +15,7 @@ const Page = () => {
       {state[params.option + "List"].length > 0 ? (
         <Grid movies={state[params.option + "List"]}></Grid>
       ) : (
-        <Loading />
+        <h1>No Results</h1>
       )}
     </div>
   );

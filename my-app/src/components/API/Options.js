@@ -55,6 +55,7 @@ export const getOption = (caseOption, newPage, titleType, mostPop) => {
           exact: "false",
           startYear: "2000",
           // titleType: "movie",
+          sort: "year.decr",
           info: "base_info",
           page: `${newPage}`,
           limit: "50",

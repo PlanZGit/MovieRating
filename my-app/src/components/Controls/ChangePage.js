@@ -18,7 +18,7 @@ export const ChangePage = ({ getData, currentPage, next, option, title }) => {
         Back
       </NavLink>
 
-      <div className="pageNum">
+      <div className={next === null ? "notVisible" : "pageNum"}>
         <p>Page {page}</p>
       </div>
 
