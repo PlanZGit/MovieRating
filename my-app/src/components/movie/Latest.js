@@ -7,7 +7,7 @@ export const Latest = () => {
   const { state, getData } = useContext(MovieContext);
   const { id } = useParams();
 
-  // console.log(latestNext);
+  // console.log(state.latestList);
 
   //use the Params for user url page num search
   useEffect(() => {
@@ -20,6 +20,7 @@ export const Latest = () => {
     <div>
       <h2>Latest Movie Rating</h2>
       <ChangePage
+        state={state}
         getData={getData}
         currentPage={state.latestPage}
         next={state.latestNext}
